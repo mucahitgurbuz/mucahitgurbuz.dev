@@ -9,7 +9,7 @@ export function MouseFollower() {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 300 };
+  const springConfig = { damping: 40, stiffness: 1000, mass: 0.1 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
