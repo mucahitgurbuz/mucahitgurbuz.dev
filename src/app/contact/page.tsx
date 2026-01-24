@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Send, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter, ExternalLink } from "lucide-react";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ContactForm } from "@/components/contact";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -166,68 +164,7 @@ export default function ContactPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form
-                  action={`mailto:${SITE_CONFIG.email}`}
-                  method="GET"
-                  className="space-y-6"
-                >
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-mono text-primary"
-                    >
-                      name:
-                    </label>
-                    <Input
-                      id="name"
-                      name="subject"
-                      placeholder="Your name"
-                      className="bg-muted/30 border-border font-mono"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-mono text-primary"
-                    >
-                      email:
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="bg-muted/30 border-border font-mono"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="message"
-                      className="text-sm font-mono text-primary"
-                    >
-                      message:
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="body"
-                      placeholder="Your message..."
-                      rows={6}
-                      className="bg-muted/30 border-border font-mono resize-none"
-                      required
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full font-mono bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
-                    <Send className="w-4 h-4 mr-2" />
-                    await sendMessage();
-                  </Button>
-                </form>
+                <ContactForm />
                 <p className="text-lg font-mono text-muted-foreground pt-6 text-center">
                   {"}"}
                 </p>
@@ -269,7 +206,7 @@ export default function ContactPage() {
     ╚═══════════════════════════════════════╝
                 `}
               </pre>
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent" />
             </div>
           </div>
         </div>
