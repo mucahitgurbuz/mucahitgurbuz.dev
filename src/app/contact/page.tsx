@@ -72,23 +72,6 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <a
-                    href={`tel:${SITE_CONFIG.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-4 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors group"
-                  >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary group-hover:glow transition-all">
-                      <Phone className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground font-mono">
-                        phone:
-                      </p>
-                      <p className="text-foreground font-mono">
-                        {SITE_CONFIG.phone}
-                      </p>
-                    </div>
-                  </a>
-
                   <p className="text-lg font-mono text-muted-foreground pt-2">
                     {"}"};
                   </p>
