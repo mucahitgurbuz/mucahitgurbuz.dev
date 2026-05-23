@@ -14,6 +14,27 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Universal-link verification files for the HitTheRoad iOS / Android app.
+  // The AASA file ships without a `.json` extension, so we force the
+  // content type here.
+  async headers() {
+    return [
+      {
+        source: "/.well-known/apple-app-site-association",
+        headers: [
+          { key: "Content-Type", value: "application/json" },
+          { key: "Cache-Control", value: "public, max-age=3600" },
+        ],
+      },
+      {
+        source: "/.well-known/assetlinks.json",
+        headers: [
+          { key: "Content-Type", value: "application/json" },
+          { key: "Cache-Control", value: "public, max-age=3600" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
