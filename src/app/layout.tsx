@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Inter } from "next/font/google";
-import { Header, Footer } from "@/components/layout";
-import { MouseFollower, KonamiEasterEgg, PersonJsonLd, WebsiteJsonLd } from "@/components/shared";
 import "@/app/globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -98,16 +96,8 @@ export default function RootLayout({
       className={`dark ${jetbrainsMono.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
-      <head>
-        <PersonJsonLd />
-        <WebsiteJsonLd />
-      </head>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased cursor-none md:cursor-none">
-        <MouseFollower />
-        <KonamiEasterEgg />
-        <Header />
-        <main className="pt-20">{children}</main>
-        <Footer />
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        {children}
       </body>
     </html>
   );
