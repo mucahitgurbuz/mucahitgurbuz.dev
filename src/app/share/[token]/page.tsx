@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 const APP_STORE_URL =
   "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743";
@@ -85,11 +86,20 @@ export async function generateMetadata({
       title: `${headline} · HitTheRoad`,
       description,
       url: shareUrl,
+      images: [
+        {
+          url: "/hittheroad/logo.png",
+          width: 1024,
+          height: 1024,
+          alt: "HitTheRoad",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${headline} · HitTheRoad`,
       description,
+      images: ["/hittheroad/logo.png"],
     },
     other: {
       "apple-itunes-app": `app-id=${APP_STORE_ID}, app-argument=${shareUrl}`,
@@ -118,8 +128,15 @@ export default async function SharedTripPage({ params }: PageProps) {
     <main className="min-h-screen flex items-center justify-center px-6 py-16 bg-gradient-to-b from-emerald-50 via-white to-amber-50 text-slate-900">
       <div className="w-full max-w-md flex flex-col gap-8">
         <header className="flex flex-col items-center text-center gap-3">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl font-semibold shadow-lg shadow-emerald-600/20">
-            HR
+          <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg shadow-emerald-900/10">
+            <Image
+              src="/hittheroad/logo.png"
+              alt="HitTheRoad"
+              width={160}
+              height={160}
+              priority
+              className="w-full h-full object-cover"
+            />
           </div>
           <h1 className="text-2xl font-semibold tracking-tight">
             Open this trip in HitTheRoad
