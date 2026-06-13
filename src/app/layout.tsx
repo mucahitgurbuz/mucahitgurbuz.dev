@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Mücahit Gürbüz",
   },
   description:
-    "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies. Currently at Babbel in Berlin, focused on AI transformation.",
+    "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies. Currently at Babbel in Berlin and founder of Aida Yazılım, shipping AI products like HitTheRoad.",
   keywords: [
     "Software Engineer",
     "React",

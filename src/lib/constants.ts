@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: "Mücahit Gürbüz",
   title: "Senior Software Engineer",
   description:
-    "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies. Currently leading core product development at Babbel in Berlin. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
+    "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies. Currently leading core product development at Babbel in Berlin, and founder of Aida Yazılım — an AI studio behind products like HitTheRoad, live on the App Store. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
   url: "https://mucahitgurbuz.dev",
   email: "mucahitgurbuz@gmail.com",
   phone: "+49 176 8325 8742",
@@ -122,6 +122,33 @@ export const EDUCATION = [
     location: "Ankara, Turkey",
     period: "2010 - 2016",
     gpa: "2.75",
+  },
+];
+
+export const FEATURED_PROJECTS = [
+  {
+    name: "HitTheRoad",
+    tagline: "Your AI Road Trip Planner",
+    description:
+      "An AI-powered road trip planner. Tell it where and when — it crafts a day-by-day route with scenic stops, hidden gems, local food and places to stay, then becomes your in-trip copilot on the road. Designed, built and shipped end-to-end, live on the App Store in 5 languages.",
+    technologies: ["React Native", "Expo", "TypeScript", "Supabase", "LLM / RAG"],
+    appStore:
+      "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743",
+    logo: "/hittheroad/logo.png",
+    screenshots: [
+      "/hittheroad/screen-overview.png",
+      "/hittheroad/screen-day.png",
+      "/hittheroad/screen-live.png",
+    ],
+  },
+  {
+    name: "Aida Yazılım",
+    tagline: "AI Studio & Consultancy",
+    description:
+      "My AI venture — helping companies adopt AI from strategy to shipped product. From PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad.",
+    technologies: ["Next.js", "TypeScript", "RAG", "OpenAI", "Vercel"],
+    link: "https://aidayazilim.com",
+    monogram: "a",
   },
 ];
 

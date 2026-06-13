@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Briefcase, GraduationCap, Video, Music, Plane, Tent } from "lucide-react";
+import { MapPin, Briefcase, GraduationCap, Video, Music, Plane, Tent, Rocket } from "lucide-react";
 import { Timeline, SkillsCloud } from "@/components/about";
 import { SITE_CONFIG, HOBBIES, SOCIAL_LINKS } from "@/lib/constants";
 import { Badge } from "@/components/ui/badge";
@@ -63,6 +63,13 @@ export default function AboutPage() {
                   <GraduationCap className="w-3 h-3" />
                   METU
                 </Badge>
+                <Badge
+                  variant="outline"
+                  className="gap-1 border-primary/40 text-primary"
+                >
+                  <Rocket className="w-3 h-3" />
+                  Founder · Aida Yazılım
+                </Badge>
               </div>
             </div>
           </div>
@@ -99,6 +106,17 @@ export default function AboutPage() {
                 working with React and TypeScript. I&apos;m deeply invested in{" "}
                 <strong className="text-foreground">AI transformation</strong> and
                 how it&apos;s reshaping how we build software.
+              </p>
+              <p>
+                <span className="text-primary font-mono">venture:</span> On the
+                side, I founded{" "}
+                <strong className="text-foreground">Aida Yazılım</strong>, an AI
+                studio that takes companies from strategy to shipped product —
+                from{" "}
+                <strong className="text-foreground">PorlandAI</strong>, a RAG
+                assistant for 1000+ employees, to{" "}
+                <strong className="text-foreground">HitTheRoad</strong>, an AI
+                road-trip planner now live on the App Store.
               </p>
               <p>
                 <span className="text-primary font-mono">passion:</span> I believe
