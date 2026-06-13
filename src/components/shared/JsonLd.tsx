@@ -22,12 +22,21 @@ export function PersonJsonLd() {
       SOCIAL_LINKS.github,
       SOCIAL_LINKS.twitter,
       SOCIAL_LINKS.googleScholar,
+      "https://aidayazilim.com",
+      "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743",
     ],
-    worksFor: {
-      "@type": "Organization",
-      name: "Babbel",
-      url: "https://www.babbel.com",
-    },
+    worksFor: [
+      {
+        "@type": "Organization",
+        name: "Babbel",
+        url: "https://www.babbel.com",
+      },
+      {
+        "@type": "Organization",
+        name: "Aida Yazılım",
+        url: "https://aidayazilim.com",
+      },
+    ],
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: "Middle East Technical University",

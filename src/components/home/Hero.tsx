@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, MapPin, Briefcase, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Briefcase, Sparkles, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE_CONFIG, ROLES } from "@/lib/constants";
 
@@ -119,12 +119,43 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8"
           >
-            Building modern web experiences with React & TypeScript. Passionate
-            about AI transformation and empowering teams through knowledge
-            sharing.
+            Building modern web experiences with React & TypeScript. Founder of{" "}
+            <span className="text-foreground">Aida Yazılım</span>, shipping AI
+            products like <span className="text-foreground">HitTheRoad</span> —
+            and passionate about AI transformation.
           </motion.p>
+
+          {/* Currently building */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+            className="flex flex-wrap items-center justify-center gap-3 mb-10"
+          >
+            <span className="text-xs font-mono text-muted-foreground">
+              <span className="text-primary">~/</span>building
+            </span>
+            <a
+              href="https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 glass rounded-full px-3 py-1.5 text-sm font-mono text-foreground/90 hover:text-primary transition-colors"
+            >
+              HitTheRoad
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="https://aidayazilim.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 glass rounded-full px-3 py-1.5 text-sm font-mono text-foreground/90 hover:text-primary transition-colors"
+            >
+              Aida Yazılım
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div

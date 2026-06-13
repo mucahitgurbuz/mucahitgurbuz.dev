@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { ExperienceCard, ProjectShowcase } from "@/components/experience";
+import {
+  ExperienceCard,
+  ProjectShowcase,
+  FeaturedProjects,
+} from "@/components/experience";
 import { EXPERIENCE, PROJECTS, EDUCATION } from "@/lib/constants";
 import { Separator } from "@/components/ui/separator";
 
@@ -24,6 +28,19 @@ export default function ExperiencePage() {
           </p>
         </div>
       </section>
+
+      {/* Featured Work */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-mono font-bold mb-8">
+            <span className="text-primary">const</span> featured = [
+          </h2>
+          <FeaturedProjects />
+          <p className="text-2xl font-mono text-muted-foreground mt-8">];</p>
+        </div>
+      </section>
+
+      <Separator className="max-w-4xl mx-auto" />
 
       {/* Work Experience */}
       <section className="container mx-auto px-4 py-12">
