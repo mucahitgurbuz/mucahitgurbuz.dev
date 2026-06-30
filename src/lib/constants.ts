@@ -130,10 +130,12 @@ export const FEATURED_PROJECTS = [
     name: "HitTheRoad",
     tagline: "Your AI Road Trip Planner",
     description:
-      "An AI-powered road trip planner. Tell it where and when — it crafts a day-by-day route with scenic stops, hidden gems, local food and places to stay, then becomes your in-trip copilot on the road. Designed, built and shipped end-to-end, live on the App Store in 5 languages.",
+      "An AI-powered road trip planner. Tell it where and when — it crafts a day-by-day route with scenic stops, hidden gems, local food and places to stay, then becomes your in-trip copilot on the road. Designed, built and shipped end-to-end, live on the App Store and Google Play in 5 languages.",
     technologies: ["React Native", "Expo", "TypeScript", "Supabase", "LLM / RAG"],
     appStore:
       "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743",
+    googlePlay:
+      "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.hittheroad",
     logo: "/hittheroad/logo.png",
     screenshots: [
       "/hittheroad/screen-overview.png",

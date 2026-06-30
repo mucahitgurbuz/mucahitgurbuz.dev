@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { StoreBadges } from "@/components/shared/StoreBadges";
 
 const APP_STORE_URL =
   "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743";
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.hittheroad";
 const APP_STORE_ID = "6759530743";
 const APP_SCHEME_BASE = "hittheroad://share/";
 const SITE_ORIGIN = "https://hittheroad.mucahitgurbuz.dev";
@@ -179,17 +182,16 @@ export default async function SharedTripPage({ params }: PageProps) {
           >
             Open in HitTheRoad
           </a>
-          <a
-            href={APP_STORE_URL}
-            className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white font-medium px-6 py-3 hover:bg-slate-800 transition-colors"
-          >
-            Download on the App Store
-          </a>
+          <StoreBadges
+            appStore={APP_STORE_URL}
+            googlePlay={PLAY_STORE_URL}
+            className="justify-center"
+          />
         </div>
 
         <p className="text-xs text-center text-slate-500">
-          Don&apos;t have HitTheRoad yet? Install it from the App Store, then
-          open this link again to load the trip.
+          Don&apos;t have HitTheRoad yet? Install it from the App Store or Google
+          Play, then open this link again to load the trip.
         </p>
       </div>
     </main>
