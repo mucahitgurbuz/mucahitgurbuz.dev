@@ -29,7 +29,7 @@ export function PersonJsonLd() {
     worksFor: [
       {
         "@type": "Organization",
-        name: "Babbel",
+        name: "Babbel Labs",
         url: "https://www.babbel.com",
       },
       {

@@ -1,6 +1,6 @@
 # mucahitgurbuz.dev
 
-Personal website of Mücahit Gürbüz - Senior Software Engineer
+Personal website of Mücahit Gürbüz - Principal Engineer
 
 ## Tech Stack
 

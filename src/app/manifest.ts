@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Mücahit Gürbüz | Senior Software Engineer",
+    name: "Mücahit Gürbüz | Principal Engineer",
     short_name: "MG",
     description:
-      "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies.",
+      "Principal Engineer at Babbel Labs with 10+ years of expertise in React, TypeScript, and modern web technologies.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0a0a",

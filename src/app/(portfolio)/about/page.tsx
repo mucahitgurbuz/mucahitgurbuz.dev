@@ -53,7 +53,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
                 <Badge variant="outline" className="gap-1">
                   <Briefcase className="w-3 h-3" />
-                  Babbel
+                  Babbel Labs
                 </Badge>
                 <Badge variant="outline" className="gap-1">
                   <MapPin className="w-3 h-3" />
@@ -100,10 +100,11 @@ export default function AboutPage() {
                 large-scale SaaS applications.
               </p>
               <p>
-                <span className="text-primary font-mono">present:</span> Today, I
-                lead core product development at{" "}
-                <strong className="text-foreground">Babbel</strong> in Berlin,
-                working with React and TypeScript. I&apos;m deeply invested in{" "}
+                <span className="text-primary font-mono">present:</span> Today, I&apos;m
+                a <strong className="text-foreground">Principal Engineer</strong> at{" "}
+                <strong className="text-foreground">Babbel Labs</strong> in Berlin —
+                the AI-first company under Babbel Group building cutting-edge
+                language learning apps. I&apos;m deeply invested in{" "}
                 <strong className="text-foreground">AI transformation</strong> and
                 how it&apos;s reshaping how we build software.
               </p>

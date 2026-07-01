@@ -16,18 +16,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mücahit Gürbüz | Senior Software Engineer",
+    default: "Mücahit Gürbüz | Principal Engineer",
     template: "%s | Mücahit Gürbüz",
   },
   description:
-    "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies. Currently at Babbel in Berlin and founder of Aida Yazılım, shipping AI products like HitTheRoad.",
+    "Principal Engineer at Babbel Labs, the AI-first company under Babbel Group building cutting-edge language learning apps, based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, shipping AI products like HitTheRoad.",
   keywords: [
+    "Principal Engineer",
     "Software Engineer",
     "React",
     "TypeScript",
     "Next.js",
-    "Frontend Developer",
     "Berlin",
+    "Babbel Labs",
     "Babbel",
     "AI",
     "Agentic Coding",
@@ -39,23 +40,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://mucahitgurbuz.dev",
     siteName: "Mücahit Gürbüz",
-    title: "Mücahit Gürbüz | Senior Software Engineer",
+    title: "Mücahit Gürbüz | Principal Engineer",
     description:
-      "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies.",
+      "Principal Engineer at Babbel Labs with 10+ years of expertise in React, TypeScript, and modern web technologies.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Mücahit Gürbüz - Senior Software Engineer",
+        alt: "Mücahit Gürbüz - Principal Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mücahit Gürbüz | Senior Software Engineer",
+    title: "Mücahit Gürbüz | Principal Engineer",
     description:
-      "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies.",
+      "Principal Engineer at Babbel Labs with 10+ years of expertise in React, TypeScript, and modern web technologies.",
     creator: "@Sosyal_Muhendis",
     images: ["/og-image.png"],
   },

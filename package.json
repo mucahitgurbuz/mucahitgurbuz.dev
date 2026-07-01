@@ -1,7 +1,7 @@
 {
   "name": "mucahitgurbuz.dev",
   "version": "1.0.0",
-  "description": "Personal website of Mücahit Gürbüz - Senior Software Engineer",
+  "description": "Personal website of Mücahit Gürbüz - Principal Engineer",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

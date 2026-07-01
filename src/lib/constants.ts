@@ -1,8 +1,8 @@
 export const SITE_CONFIG = {
   name: "Mücahit Gürbüz",
-  title: "Senior Software Engineer",
+  title: "Principal Engineer",
   description:
-    "Senior Software Engineer with 10+ years of expertise in React, TypeScript, and modern web technologies. Currently leading core product development at Babbel in Berlin, and founder of Aida Yazılım — an AI studio behind products like HitTheRoad, live on the App Store. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
+    "Principal Engineer at Babbel Labs — the AI-first company under Babbel Group building cutting-edge language learning apps — based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, an AI studio behind products like HitTheRoad, live on the App Store. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
   url: "https://mucahitgurbuz.dev",
   email: "mucahitgurbuz@gmail.com",
   phone: "+49 176 8325 8742",
@@ -20,7 +20,7 @@ export const SOCIAL_LINKS = {
 };
 
 export const ROLES = [
-  "Senior Software Engineer",
+  "Principal Engineer",
   "AI Enthusiast",
   "Civil Engineer turned Coder",
   "React/TypeScript Expert",
@@ -39,12 +39,27 @@ export const SKILLS = {
 
 export const EXPERIENCE = [
   {
+    title: "Principal Engineer",
+    company: "Babbel Labs",
+    location: "Berlin, Germany",
+    period: "Jul 2026 - Present",
+    description:
+      "Principal Engineer at Babbel Labs, the AI-first company under Babbel Group building cutting-edge language learning apps. Setting technical direction across products and driving AI-first engineering from prototype to production.",
+    technologies: ["React", "TypeScript", "Node.js", "LLM / RAG", "AI"],
+    highlights: [
+      "Technical direction for AI-first language learning products",
+      "AI-first engineering from prototype to production",
+      "Cross-team architecture and standards",
+      "Mentoring and knowledge-sharing across engineering",
+    ],
+  },
+  {
     title: "Senior Software Engineer",
     company: "Babbel",
     location: "Berlin, Germany",
-    period: "Nov 2021 - Present",
+    period: "Nov 2021 - Jun 2026",
     description:
-      "Leading the Babbel app's core product development using React and TypeScript. Deploying across Android, iOS, and web platforms. Facilitating engineering-design communication and conducting AI-powered workflow sessions.",
+      "Led the Babbel app's core product development using React and TypeScript. Deployed across Android, iOS, and web platforms. Facilitated engineering-design communication and conducted AI-powered workflow sessions.",
     technologies: ["React", "TypeScript", "Kotlin", "Swift", "Node.js"],
     highlights: [
       "Led core product interface development",
@@ -215,7 +230,7 @@ export const NAV_ITEMS = [
 ];
 
 export const TERMINAL_COMMANDS: Record<string, string> = {
-  whoami: "Mücahit Gürbüz - Senior Software Engineer @ Babbel",
+  whoami: "Mücahit Gürbüz - Principal Engineer @ Babbel Labs",
   location: "Berlin, Germany 🇩🇪",
   skills: "TypeScript, React, Next.js, Node.js, AI Tools",
   contact: "mucahitgurbuz@gmail.com",
