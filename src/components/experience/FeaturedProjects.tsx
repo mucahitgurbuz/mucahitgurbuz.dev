@@ -106,6 +106,15 @@ export function FeaturedProjects() {
                 googlePlay={hitTheRoad.googlePlay as string}
               />
               <a
+                href={hitTheRoad.link as string}
+                target="_blank"
+                rel="noopener"
+                className="group inline-flex items-center gap-1 text-sm font-mono text-primary hover:text-primary/80"
+              >
+                visit website
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
                 href={hitTheRoad.appStore as string}
                 target="_blank"
                 rel="noopener noreferrer"
