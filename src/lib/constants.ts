@@ -172,6 +172,14 @@ export const FEATURED_PROJECTS = [
 
 export const PROJECTS = [
   {
+    name: "UNO Scoreboard",
+    description:
+      "A free online scoreboard for four-player UNO, in four languages. Tap the cards left in a hand and it adds them up. Plain HTML, CSS and JavaScript, installable as a web app.",
+    technologies: ["HTML", "CSS", "JavaScript", "PWA"],
+    link: "https://mucahitgurbuz.github.io/uno-puan-masasi/",
+    github: "https://github.com/mucahitgurbuz/uno-puan-masasi",
+  },
+  {
     name: "Babbel App",
     description:
       "Language learning application with 10M+ users. Led core product frontend development.",
