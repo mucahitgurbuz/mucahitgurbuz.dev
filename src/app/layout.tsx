@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Inter } from "next/font/google";
+import { Instrument_Sans, Newsreader } from "next/font/google";
 import "@/app/globals.css";
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+const newsreader = Newsreader({
+  subsets: ["latin", "latin-ext"],
+  axes: ["opsz"],
+  variable: "--font-newsreader",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-instrument",
   display: "swap",
 });
 
@@ -78,10 +79,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#e8ebe7",
   width: "device-width",
   initialScale: 1,
 };
@@ -94,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${jetbrainsMono.variable} ${inter.variable}`}
+      className={`${newsreader.variable} ${instrumentSans.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Loader2 } from "lucide-react";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
+
+const field =
+  "w-full border-0 border-b border-contour bg-transparent px-0 py-3 text-[17px] text-ink placeholder:text-pencil/70 focus:border-ink focus:outline-none disabled:opacity-50";
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -20,7 +20,6 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Add Web3Forms access key
     formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "");
 
     try {
@@ -36,112 +35,61 @@ export function ContactForm() {
         form.reset();
       } else {
         setStatus("error");
-        setErrorMessage(data.message || "Something went wrong. Please try again.");
+        setErrorMessage(data.message || "The message did not send. Try again, or write to the email address instead.");
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setErrorMessage("No connection. Check your network and try again.");
     }
   }
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center py-12 text-center">
-        <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mb-4">
-          <CheckCircle className="w-8 h-8 text-primary" />
-        </div>
-        <h3 className="text-xl font-mono font-bold mb-2">Message Sent!</h3>
-        <p className="text-muted-foreground mb-6">
-          Thanks for reaching out. I&apos;ll get back to you soon.
-        </p>
-        <Button
-          variant="outline"
-          onClick={() => setStatus("idle")}
-          className="font-mono"
-        >
+      <div className="border-t border-contour pt-8">
+        <h2 className="font-serif text-3xl">Message sent</h2>
+        <p className="mt-3 text-pencil">Thanks for writing. I will reply by email.</p>
+        <button type="button" onClick={() => setStatus("idle")} className="survey-link mt-8 font-medium">
           Send another message
-        </Button>
+        </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Honeypot field for spam protection */}
+    <form onSubmit={handleSubmit} className="space-y-8">
       <input type="checkbox" name="botcheck" className="hidden" />
-      
-      {/* Hidden fields for Web3Forms */}
       <input type="hidden" name="from_name" value="Portfolio Contact Form" />
       <input type="hidden" name="subject" value="New message from your portfolio" />
 
-      <div className="space-y-2">
-        <label htmlFor="name" className="text-sm font-mono text-primary">
-          name:
-        </label>
-        <Input
-          id="name"
-          name="name"
-          placeholder="Your name"
-          className="bg-muted/30 border-border font-mono"
-          required
-          disabled={status === "loading"}
-        />
-      </div>
+      <label className="block">
+        <span className="text-[15px] text-pencil">Name</span>
+        <input name="name" autoComplete="name" required disabled={status === "loading"} className={field} />
+      </label>
 
-      <div className="space-y-2">
-        <label htmlFor="email" className="text-sm font-mono text-primary">
-          email:
-        </label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="your@email.com"
-          className="bg-muted/30 border-border font-mono"
-          required
-          disabled={status === "loading"}
-        />
-      </div>
+      <label className="block">
+        <span className="text-[15px] text-pencil">Email</span>
+        <input name="email" type="email" autoComplete="email" required disabled={status === "loading"} className={field} />
+      </label>
 
-      <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-mono text-primary">
-          message:
-        </label>
-        <Textarea
-          id="message"
-          name="message"
-          placeholder="Your message..."
-          rows={6}
-          className="bg-muted/30 border-border font-mono resize-none"
-          required
-          disabled={status === "loading"}
-        />
-      </div>
+      <label className="block">
+        <span className="text-[15px] text-pencil">Message</span>
+        <textarea name="message" rows={5} required disabled={status === "loading"} className={`${field} resize-none`} />
+      </label>
 
       {status === "error" && (
-        <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive">
-          <AlertCircle className="w-4 h-4 shrink-0" />
-          <p className="text-sm font-mono">{errorMessage}</p>
-        </div>
+        <p role="alert" className="text-[15px] text-destructive">
+          {errorMessage}
+        </p>
       )}
 
-      <Button
+      <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full font-mono bg-primary text-primary-foreground hover:bg-primary/90"
+        className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 font-medium text-paper transition-colors hover:bg-[#303836] disabled:opacity-60"
       >
-        {status === "loading" ? (
-          <>
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send className="w-4 h-4 mr-2" />
-            await sendMessage();
-          </>
-        )}
-      </Button>
+        {status === "loading" && <Loader2 className="h-4 w-4 animate-spin" />}
+        {status === "loading" ? "Sending" : "Send message"}
+      </button>
     </form>
   );
 }

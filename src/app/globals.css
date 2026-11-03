@@ -1,60 +1,45 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Step 1: Define CSS Variables at Root */
 :root {
-  --background: hsl(0 0% 3.9%);
-  --foreground: hsl(0 0% 98%);
-  --card: hsl(0 0% 3.9%);
-  --card-foreground: hsl(0 0% 98%);
-  --popover: hsl(0 0% 3.9%);
-  --popover-foreground: hsl(0 0% 98%);
-  --primary: hsl(186 100% 50%);
-  --primary-foreground: hsl(0 0% 3.9%);
-  --secondary: hsl(270 60% 50%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(0 0% 14.9%);
-  --muted-foreground: hsl(0 0% 63.9%);
-  --accent: hsl(186 100% 50%);
-  --accent-foreground: hsl(0 0% 3.9%);
-  --destructive: hsl(0 62.8% 30.6%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(0 0% 14.9%);
-  --input: hsl(0 0% 14.9%);
-  --ring: hsl(186 100% 50%);
-  --chart-1: hsl(186 100% 50%);
-  --chart-2: hsl(270 60% 50%);
-  --chart-3: hsl(120 60% 50%);
-  --chart-4: hsl(45 100% 50%);
-  --chart-5: hsl(0 60% 50%);
-  --radius: 0.5rem;
-  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --paper: #e8ebe7;
+  --paper-deep: #dde1dc;
+  --ink: #1c2220;
+  --pencil: #5a6460;
+  --contour: #adb7b1;
+  --contour-index: #8a9690;
+  --survey: #c2531d;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--paper-deep);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-deep);
+  --muted-foreground: var(--pencil);
+  --accent: var(--paper-deep);
+  --accent-foreground: var(--ink);
+  --destructive: #a3341b;
+  --destructive-foreground: var(--paper);
+  --border: var(--contour);
+  --input: var(--contour);
+  --ring: var(--survey);
+  --radius: 0.375rem;
 }
 
-.light {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(0 0% 3.9%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(0 0% 3.9%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(0 0% 3.9%);
-  --primary: hsl(186 100% 35%);
-  --primary-foreground: hsl(0 0% 98%);
-  --secondary: hsl(270 60% 50%);
-  --secondary-foreground: hsl(0 0% 98%);
-  --muted: hsl(0 0% 96.1%);
-  --muted-foreground: hsl(0 0% 45.1%);
-  --accent: hsl(186 100% 35%);
-  --accent-foreground: hsl(0 0% 3.9%);
-  --destructive: hsl(0 84.2% 60.2%);
-  --destructive-foreground: hsl(0 0% 98%);
-  --border: hsl(0 0% 89.8%);
-  --input: hsl(0 0% 89.8%);
-  --ring: hsl(186 100% 35%);
-}
-
-/* Step 2: Map Variables to Tailwind Utilities */
 @theme inline {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-pencil: var(--pencil);
+  --color-contour: var(--contour);
+  --color-survey: var(--survey);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -74,145 +59,170 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --font-family-mono: var(--font-mono);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
 }
 
-/* Step 3: Apply Base Styles */
 @layer base {
   * {
     border-color: var(--border);
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
   }
 
-  /* Custom scrollbar for nerdy look */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  ::-webkit-scrollbar-track {
-    background: var(--background);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--muted);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-foreground);
-  }
-
-  /* Selection style */
   ::selection {
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: var(--survey);
+    color: var(--paper);
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--survey);
+    outline-offset: 4px;
+    border-radius: 2px;
   }
 }
 
-/* Glow effects for nerdy interactions */
-@layer utilities {
-  .glow {
-    box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(24px, 5vw, 72px);
   }
 
-  .glow-text {
-    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-variation-settings: "opsz" 72;
+    letter-spacing: -0.03em;
   }
 
-  .text-gradient {
-    background: linear-gradient(
-      135deg,
-      var(--primary) 0%,
-      var(--secondary) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .survey-link {
+    text-decoration: underline;
+    text-decoration-color: var(--survey);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 6px;
+    transition: text-underline-offset 0.2s;
   }
 
-  .glass {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
+  .survey-link:hover {
+    text-underline-offset: 3px;
   }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .topo .lv {
+    fill: none;
+    stroke: var(--contour);
+    stroke-width: 1;
+    stroke-linecap: round;
   }
 
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+  .topo .lv.ix {
+    stroke: var(--contour-index);
+    stroke-width: 1.35;
   }
 
-  .animate-typing {
-    overflow: hidden;
-    border-right: 2px solid var(--primary);
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  .topo .elev {
+    font: 500 10.5px var(--font-sans);
+    fill: var(--contour-index);
+    paint-order: stroke;
+    stroke: var(--paper);
+    stroke-width: 5px;
+    font-variant-numeric: tabular-nums;
   }
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
+  .topo .route {
+    fill: none;
+    stroke: var(--survey);
+    stroke-width: 1.6;
+    stroke-dasharray: 2 7;
+    stroke-linecap: round;
   }
 
-  @keyframes pulse-glow {
-    0%,
-    100% {
-      box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
-    }
-    50% {
-      box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary);
-    }
+  .topo .pin {
+    fill: var(--survey);
   }
 
-  @keyframes typing {
+  .topo .ring {
+    fill: none;
+    stroke: var(--survey);
+    stroke-width: 1;
+    opacity: 0.5;
+  }
+
+  .topo .place,
+  .topo .coord {
+    paint-order: stroke;
+    stroke: var(--paper);
+    stroke-width: 6px;
+  }
+
+  .topo .place {
+    font: 500 13px var(--font-sans);
+    fill: var(--ink);
+  }
+
+  .topo .coord {
+    font: 400 12px var(--font-sans);
+    fill: var(--pencil);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .topo .reveal {
+    transform-box: view-box;
+    animation: topo-reveal 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .topo .later {
+    animation: topo-fade 1.2s ease 1.5s both;
+  }
+
+  @keyframes topo-reveal {
     from {
-      width: 0;
+      transform: scale(0);
     }
     to {
-      width: 100%;
+      transform: scale(1);
     }
   }
 
-  @keyframes blink-caret {
-    from,
+  @keyframes topo-fade {
+    from {
+      opacity: 0;
+    }
     to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: var(--primary);
-    }
-  }
-
-  @keyframes matrix-rain {
-    0% {
-      transform: translateY(-100%);
       opacity: 1;
     }
-    100% {
-      transform: translateY(100vh);
-      opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .topo .reveal,
+    .topo .later {
+      animation: none;
     }
   }
 }

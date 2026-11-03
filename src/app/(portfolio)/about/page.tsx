@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Briefcase, GraduationCap, Video, Music, Plane, Tent, Rocket } from "lucide-react";
-import { Timeline, SkillsCloud } from "@/components/about";
-import { SITE_CONFIG, HOBBIES, SOCIAL_LINKS } from "@/lib/constants";
-import { Badge } from "@/components/ui/badge";
+import { ContactCta, SectionHead } from "@/components/shared";
+import { HOBBIES, SITE_CONFIG, SKILLS, SOCIAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,191 +9,91 @@ export const metadata: Metadata = {
     "Learn about Mücahit Gürbüz - A software engineer with a unique journey from Civil Engineering to building modern web applications.",
 };
 
-const hobbyIcons: Record<string, React.ReactNode> = {
-  Video: <Video className="w-5 h-5" />,
-  Music: <Music className="w-5 h-5" />,
-  Plane: <Plane className="w-5 h-5" />,
-  Tent: <Tent className="w-5 h-5" />,
-};
+const SKILL_GROUPS: { label: string; items: readonly string[] }[] = [
+  { label: "Languages", items: SKILLS.languages },
+  { label: "Frontend", items: SKILLS.frontend },
+  { label: "Backend", items: SKILLS.backend },
+  { label: "Testing", items: SKILLS.testing },
+  { label: "Tools", items: SKILLS.tools },
+  { label: "AI", items: SKILLS.ai },
+];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen py-12">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-            {/* Profile Image */}
-            <div className="relative">
-              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/50 glow">
-                <Image
-                  src={SITE_CONFIG.avatar}
-                  alt={SITE_CONFIG.name}
-                  width={160}
-                  height={160}
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-mono">
-                10+ years
-              </div>
-            </div>
-
-            {/* Intro */}
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-bold font-mono mb-4">
-                <span className="text-primary">$</span> whoami
-              </h1>
-              <p className="text-xl text-muted-foreground mb-4">
-                {SITE_CONFIG.description}
-              </p>
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
-                <Badge variant="outline" className="gap-1">
-                  <Briefcase className="w-3 h-3" />
-                  Babbel Labs
-                </Badge>
-                <Badge variant="outline" className="gap-1">
-                  <MapPin className="w-3 h-3" />
-                  Berlin, Germany
-                </Badge>
-                <Badge variant="outline" className="gap-1">
-                  <GraduationCap className="w-3 h-3" />
-                  METU
-                </Badge>
-                <Badge
-                  variant="outline"
-                  className="gap-1 border-primary/40 text-primary"
-                >
-                  <Rocket className="w-3 h-3" />
-                  Founder · Aida Yazılım
-                </Badge>
-              </div>
-            </div>
-          </div>
-
-          {/* Story Section */}
-          <div className="glass rounded-lg p-8 mb-12">
-            <h2 className="text-2xl font-mono font-bold mb-6">
-              <span className="text-primary">const</span> myJourney = {"{"}
-            </h2>
-            <div className="space-y-4 text-muted-foreground pl-4 border-l-2 border-primary/30">
-              <p>
-                <span className="text-primary font-mono">origin:</span> I started
-                my career as a <strong className="text-foreground">Civil Engineer</strong>,
-                earning both my Bachelor&apos;s and Master&apos;s degrees from Middle East
-                Technical University in Ankara, Turkey.
-              </p>
-              <p>
-                <span className="text-primary font-mono">pivot:</span> My research
-                in <strong className="text-foreground">autonomous robotics</strong> and
-                soil-tool interaction sparked my passion for software. I found
-                myself writing more MATLAB scripts than structural calculations.
-              </p>
-              <p>
-                <span className="text-primary font-mono">evolution:</span> That
-                curiosity led me down the rabbit hole of{" "}
-                <strong className="text-foreground">web development</strong>. What
-                started as building simple websites evolved into architecting
-                large-scale SaaS applications.
-              </p>
-              <p>
-                <span className="text-primary font-mono">present:</span> Today, I&apos;m
-                a <strong className="text-foreground">Principal Engineer</strong> at{" "}
-                <strong className="text-foreground">Babbel Labs</strong> in Berlin —
-                the AI-first company under Babbel Group building cutting-edge
-                language learning apps. I&apos;m deeply invested in{" "}
-                <strong className="text-foreground">AI transformation</strong> and
-                how it&apos;s reshaping how we build software.
-              </p>
-              <p>
-                <span className="text-primary font-mono">venture:</span> On the
-                side, I founded{" "}
-                <strong className="text-foreground">Aida Yazılım</strong>, an AI
-                studio that takes companies from strategy to shipped product —
-                from{" "}
-                <strong className="text-foreground">PorlandAI</strong>, a RAG
-                assistant for 1000+ employees, to{" "}
-                <strong className="text-foreground">HitTheRoad</strong>, an AI
-                road-trip planner now live on the App Store.
-              </p>
-              <p>
-                <span className="text-primary font-mono">passion:</span> I believe
-                in <strong className="text-foreground">knowledge sharing</strong>.
-                Every week, I conduct sessions with my team on AI tools and best
-                practices. Teaching is learning twice.
-              </p>
-            </div>
-            <p className="text-2xl font-mono text-muted-foreground mt-6">{"}"}</p>
-          </div>
-        </div>
+    <div className="wrap">
+      <section className="grid grid-cols-1 items-end gap-10 pt-[clamp(48px,8vw,110px)] min-[861px]:grid-cols-[1.4fr_1fr]">
+        <h1 className="display text-[clamp(48px,7vw,92px)] leading-[0.98] tracking-[-0.035em]">
+          From soil mechanics to software
+        </h1>
+        <Image
+          src={SITE_CONFIG.avatar}
+          alt={SITE_CONFIG.name}
+          width={420}
+          height={420}
+          priority
+          className="aspect-square w-full max-w-[320px] rounded-md object-cover grayscale-[35%] min-[861px]:justify-self-end"
+        />
       </section>
 
-      {/* Skills Cloud Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8 text-center">
-            <span className="text-primary">&lt;</span>SkillsCloud
-            <span className="text-primary">/&gt;</span>
-          </h2>
-          <SkillsCloud />
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8 text-center">
-            <span className="text-primary">git log</span> --oneline --all
-          </h2>
-          <Timeline />
-        </div>
-      </section>
-
-      {/* Hobbies Section */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8 text-center">
-            <span className="text-primary">function</span> whenNotCoding() {"{"}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {HOBBIES.map((hobby) => (
-              <div
-                key={hobby.name}
-                className="glass rounded-lg p-6 hover:border-primary/50 transition-colors group"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary group-hover:glow transition-all">
-                    {hobbyIcons[hobby.icon]}
-                  </div>
-                  <h3 className="text-lg font-mono font-bold">{hobby.name}</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{hobby.description}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-2xl font-mono text-muted-foreground mt-8">
-            {"}"}
+      <section className="grid grid-cols-1 gap-8 pt-[clamp(56px,8vw,100px)] min-[861px]:grid-cols-[170px_1fr] min-[861px]:gap-16">
+        <p className="text-[15px] text-pencil">The story so far</p>
+        <div className="max-w-[62ch] space-y-6 font-serif text-[clamp(19px,1.6vw,22px)] leading-[1.6]">
+          <p>
+            I started as a civil engineer. I earned my bachelor&apos;s and master&apos;s
+            degrees at Middle East Technical University in Ankara, where my research on
+            autonomous robotics and soil-tool interaction had me writing more MATLAB than
+            structural calculations.
           </p>
-
-          {/* Family YouTube Channel */}
-          <div className="mt-12 glass rounded-lg p-6 text-center">
-            <p className="text-muted-foreground mb-4">
-              <span className="text-primary font-mono">// </span>
-              Check out our family travel adventures on YouTube
-            </p>
-            <a
-              href={SOCIAL_LINKS.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-mono"
-            >
-              <Video className="w-5 h-5" />
-              Yerlisi Gibi
-            </a>
-          </div>
+          <p>
+            That pull toward software turned into web development, and then into large
+            SaaS products: a warehouse management system at OPLOG, then the Babbel app,
+            used by millions of learners, across web, iOS and Android.
+          </p>
+          <p>
+            Today I am a Principal Engineer at Babbel Labs in Berlin, the AI-first company
+            under Babbel Group. I set technical direction and help teams build with AI,
+            from prototype to production. Every week I run sessions with colleagues on AI
+            tools and practices. Teaching is learning twice.
+          </p>
+          <p>
+            On the side I run Aida Yazılım, a small AI studio. It built PorlandAI, an
+            assistant for more than 1,000 employees, and my own apps, HitTheRoad and
+            Olifant.
+          </p>
         </div>
       </section>
+
+      <section>
+        <SectionHead title="What I work with" />
+        <dl className="grid grid-cols-1 border-t border-contour min-[600px]:grid-cols-2 min-[1000px]:grid-cols-3">
+          {SKILL_GROUPS.map(({ label, items }) => (
+            <div key={label} className="border-b border-contour py-6 min-[600px]:pr-8">
+              <dt className="font-serif text-2xl">{label}</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-pencil">{items.join(", ")}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section>
+        <SectionHead title="Away from the keyboard">
+          Our family travel films live on{" "}
+          <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" className="survey-link text-ink">
+            Yerlisi Gibi
+          </a>{" "}
+          on YouTube.
+        </SectionHead>
+        <dl className="grid grid-cols-1 border-t border-contour min-[600px]:grid-cols-2">
+          {HOBBIES.map((hobby) => (
+            <div key={hobby.name} className="border-b border-contour py-6 min-[600px]:pr-8">
+              <dt className="font-serif text-2xl">{hobby.name}</dt>
+              <dd className="mt-2 text-[15px] text-pencil">{hobby.description}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <ContactCta />
     </div>
   );
 }
