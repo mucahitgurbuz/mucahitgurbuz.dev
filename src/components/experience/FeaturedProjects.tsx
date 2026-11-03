@@ -7,9 +7,11 @@ import { Badge } from "@/components/ui/badge";
 import { StoreBadges } from "@/components/shared/StoreBadges";
 import { FEATURED_PROJECTS } from "@/lib/constants";
 
-const [hitTheRoad, aida] = FEATURED_PROJECTS;
+type FeaturedProject = (typeof FEATURED_PROJECTS)[number];
 
-function PhoneFan() {
+const [hitTheRoad, olifant, aida] = FEATURED_PROJECTS;
+
+function PhoneFan({ app }: { app: FeaturedProject }) {
   const layout = [
     "z-20",
     "z-10 rotate-[8deg] translate-x-[42%] scale-[0.88] opacity-90 hidden sm:block",
@@ -21,7 +23,7 @@ function PhoneFan() {
       <div className="absolute inset-0 -z-10 flex items-center justify-center">
         <div className="h-60 w-60 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl" />
       </div>
-      {hitTheRoad.screenshots?.map((src, i) => (
+      {app.screenshots?.map((src, i) => (
         <motion.div
           key={src}
           initial={{ opacity: 0, y: 30 }}
@@ -33,7 +35,7 @@ function PhoneFan() {
           <div className="rounded-[1.9rem] border border-border bg-card p-1.5 shadow-2xl shadow-primary/10">
             <Image
               src={src}
-              alt={`HitTheRoad app screen ${i + 1}`}
+              alt={`${app.name} app screen ${i + 1}`}
               width={1206}
               height={2622}
               sizes="(max-width: 640px) 60vw, 220px"
@@ -46,90 +48,104 @@ function PhoneFan() {
   );
 }
 
+function ProjectLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      className="group inline-flex items-center gap-1 text-sm font-mono text-primary hover:text-primary/80"
+    >
+      {label}
+      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+    </a>
+  );
+}
+
+function AppCard({
+  app,
+  reverse = false,
+  delay = 0,
+}: {
+  app: FeaturedProject;
+  reverse?: boolean;
+  delay?: number;
+}) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="glass rounded-2xl p-6 sm:p-8 lg:p-10 hover:border-primary/50 transition-colors"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className={reverse ? "lg:order-2" : undefined}>
+          <div className="flex items-center gap-4 mb-5">
+            <Image
+              src={app.logo as string}
+              alt={`${app.name} logo`}
+              width={1024}
+              height={1024}
+              className="h-14 w-14 rounded-2xl border border-border shadow-lg"
+            />
+            <div>
+              <h3 className="text-xl font-bold font-mono text-foreground">
+                {app.name}
+              </h3>
+              <p className="text-sm text-primary font-mono">{app.tagline}</p>
+            </div>
+            <Badge
+              variant="outline"
+              className="ml-auto gap-1 border-primary/40 text-primary font-mono"
+            >
+              <Star className="h-3 w-3 fill-current" />
+              Live
+            </Badge>
+          </div>
+
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+            {app.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2 mb-7">
+            {app.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md border border-border px-2 py-1 text-xs font-mono text-muted-foreground"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            {app.appStore && app.googlePlay && (
+              <StoreBadges
+                appName={app.name}
+                appStore={app.appStore}
+                googlePlay={app.googlePlay}
+              />
+            )}
+            <ProjectLink href={app.link as string} label="visit website" />
+            {app.webApp && <ProjectLink href={app.webApp} label="open web app" />}
+            {app.appStore && <ProjectLink href={app.appStore} label="view listing" />}
+          </div>
+        </div>
+
+        <div className={reverse ? "lg:order-1" : undefined}>
+          <PhoneFan app={app} />
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 export function FeaturedProjects() {
   return (
     <div className="space-y-6">
-      {/* HitTheRoad */}
-      <motion.article
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="glass rounded-2xl p-6 sm:p-8 lg:p-10 hover:border-primary/50 transition-colors"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          {/* Info */}
-          <div>
-            <div className="flex items-center gap-4 mb-5">
-              <Image
-                src={hitTheRoad.logo as string}
-                alt="HitTheRoad logo"
-                width={1024}
-                height={1024}
-                className="h-14 w-14 rounded-2xl border border-border shadow-lg"
-              />
-              <div>
-                <h3 className="text-xl font-bold font-mono text-foreground">
-                  {hitTheRoad.name}
-                </h3>
-                <p className="text-sm text-primary font-mono">
-                  {hitTheRoad.tagline}
-                </p>
-              </div>
-              <Badge
-                variant="outline"
-                className="ml-auto gap-1 border-primary/40 text-primary font-mono"
-              >
-                <Star className="h-3 w-3 fill-current" />
-                Live
-              </Badge>
-            </div>
-
-            <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-              {hitTheRoad.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mb-7">
-              {hitTheRoad.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-md border border-border px-2 py-1 text-xs font-mono text-muted-foreground"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <StoreBadges
-                appStore={hitTheRoad.appStore as string}
-                googlePlay={hitTheRoad.googlePlay as string}
-              />
-              <a
-                href={hitTheRoad.link as string}
-                target="_blank"
-                rel="noopener"
-                className="group inline-flex items-center gap-1 text-sm font-mono text-primary hover:text-primary/80"
-              >
-                visit website
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href={hitTheRoad.appStore as string}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1 text-sm font-mono text-primary hover:text-primary/80"
-              >
-                view listing
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Phones */}
-          <PhoneFan />
-        </div>
-      </motion.article>
+      <AppCard app={hitTheRoad} />
+      <AppCard app={olifant} reverse delay={0.1} />
 
       {/* Aida Yazılım */}
       <motion.article

@@ -123,7 +123,8 @@ export function Hero() {
           >
             Building modern web experiences with React & TypeScript. Founder of{" "}
             <span className="text-foreground">Aida Yazılım</span>, shipping AI
-            products like <span className="text-foreground">HitTheRoad</span> —
+            products like <span className="text-foreground">HitTheRoad</span> and{" "}
+            <span className="text-foreground">Olifant</span> —
             and passionate about AI transformation.
           </motion.p>
 
@@ -144,6 +145,15 @@ export function Hero() {
               className="group inline-flex items-center gap-1.5 glass rounded-full px-3 py-1.5 text-sm font-mono text-foreground/90 hover:text-primary transition-colors"
             >
               HitTheRoad
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="https://olifant.family"
+              target="_blank"
+              rel="noopener"
+              className="group inline-flex items-center gap-1.5 glass rounded-full px-3 py-1.5 text-sm font-mono text-foreground/90 hover:text-primary transition-colors"
+            >
+              Olifant
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a

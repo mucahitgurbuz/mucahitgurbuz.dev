@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: "Mücahit Gürbüz",
   title: "Principal Engineer",
   description:
-    "Principal Engineer at Babbel Labs — the AI-first company under Babbel Group building cutting-edge language learning apps — based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, an AI studio behind products like HitTheRoad, live on the App Store. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
+    "Principal Engineer at Babbel Labs — the AI-first company under Babbel Group building cutting-edge language learning apps — based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, an AI studio behind products like HitTheRoad, live on the App Store, and Olifant, a family organizer. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
   url: "https://mucahitgurbuz.dev",
   email: "mucahitgurbuz@gmail.com",
   phone: "+49 176 8325 8742",
@@ -160,10 +160,25 @@ export const FEATURED_PROJECTS = [
     ],
   },
   {
+    name: "Olifant",
+    tagline: "The Calm Family Organizer",
+    description:
+      "One shared space for the whole family: plans, lists, chat and documents. Its AI inbox reads school emails, photos and PDFs and turns them into plans once a parent says yes. No ads, hosted in the EU, in 4 languages. Designed, built and shipped end-to-end: native iOS and Android apps plus a web app on one offline-first backend.",
+    technologies: ["SwiftUI", "Jetpack Compose", "React", "Supabase", "PowerSync", "LLM"],
+    link: "https://olifant.family",
+    webApp: "https://app.olifant.family",
+    logo: "/olifant/logo.png",
+    screenshots: [
+      "/olifant/screen-today.png",
+      "/olifant/screen-inbox.png",
+      "/olifant/screen-plan.png",
+    ],
+  },
+  {
     name: "Aida Yazılım",
     tagline: "AI Studio & Consultancy",
     description:
-      "My AI venture — helping companies adopt AI from strategy to shipped product. From PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad.",
+      "My AI venture — helping companies adopt AI from strategy to shipped product. From PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad and Olifant.",
     technologies: ["Next.js", "TypeScript", "RAG", "OpenAI", "Vercel"],
     link: "https://aidayazilim.com",
     monogram: "a",

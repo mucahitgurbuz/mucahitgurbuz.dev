@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 interface StoreBadgesProps {
+  appName: string;
   appStore: string;
   googlePlay: string;
   className?: string;
@@ -10,6 +11,7 @@ interface StoreBadgesProps {
 // badges. The SVGs are served unoptimized so the vector artwork stays crisp and
 // no image optimizer config is needed.
 export function StoreBadges({
+  appName,
   appStore,
   googlePlay,
   className = "",
@@ -20,7 +22,7 @@ export function StoreBadges({
         href={appStore}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Download HitTheRoad on the App Store"
+        aria-label={`Download ${appName} on the App Store`}
       >
         <Image
           src="/badges/app-store.svg"
@@ -35,7 +37,7 @@ export function StoreBadges({
         href={googlePlay}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Get HitTheRoad on Google Play"
+        aria-label={`Get ${appName} on Google Play`}
       >
         <Image
           src="/badges/google-play.svg"
