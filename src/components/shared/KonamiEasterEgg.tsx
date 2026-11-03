@@ -51,7 +51,7 @@ export function KonamiEasterEgg() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 bg-ink/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
             onClick={closeEasterEgg}
           >
             <motion.div
@@ -59,7 +59,7 @@ export function KonamiEasterEgg() {
               animate={{ scale: 1, opacity: 1, rotateX: 0 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="glass rounded-lg p-8 max-w-lg w-full text-center border-2 border-primary glow"
+              className="bg-paper rounded-md p-8 max-w-lg w-full text-center border border-contour shadow-2xl"
             >
               <Button
                 variant="ghost"
@@ -87,7 +87,7 @@ export function KonamiEasterEgg() {
                 You found the Konami Code Easter Egg!
               </p>
 
-              <div className="bg-black/50 rounded-lg p-4 font-mono text-sm mb-6">
+              <div className="bg-paper-deep rounded-md p-4 font-mono text-sm mb-6">
                 <p className="text-muted-foreground mb-2">You entered:</p>
                 <p className="text-primary">
                   ↑ ↑ ↓ ↓ ← → ← → B A

@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Principal Engineer at Babbel Labs with 10+ years of expertise in React, TypeScript, and modern web technologies.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0a0a0a",
-    theme_color: "#00ffff",
+    background_color: "#e8ebe7",
+    theme_color: "#e8ebe7",
     icons: [
       {
         src: "/icon-192.png",

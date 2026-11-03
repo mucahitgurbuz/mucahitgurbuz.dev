@@ -19,14 +19,6 @@ export const SOCIAL_LINKS = {
     "https://scholar.google.com/citations?user=hKuAWcsAAAAJ&hl=en",
 };
 
-export const ROLES = [
-  "Principal Engineer",
-  "AI Enthusiast",
-  "Civil Engineer turned Coder",
-  "React/TypeScript Expert",
-  "Agentic Coding Advocate",
-];
-
 export const SKILLS = {
   languages: ["TypeScript", "JavaScript", "SQL", "Python", "MATLAB"],
   frontend: ["React", "Next.js", "Redux", "Tailwind CSS", "Framer Motion"],
@@ -145,7 +137,7 @@ export const FEATURED_PROJECTS = [
     name: "HitTheRoad",
     tagline: "Your AI Road Trip Planner",
     description:
-      "An AI-powered road trip planner. Tell it where and when — it crafts a day-by-day route with scenic stops, hidden gems, local food and places to stay, then becomes your in-trip copilot on the road. Designed, built and shipped end-to-end, live on the App Store and Google Play in 5 languages.",
+      "Tell it where and when. It plans the route day by day, with scenic stops, food and places to stay, then rides along as your copilot. Live on the App Store and Google Play in 5 languages.",
     technologies: ["React Native", "Expo", "TypeScript", "Supabase", "LLM / RAG"],
     link: "https://hittheroad.mucahitgurbuz.dev",
     appStore:
@@ -153,6 +145,8 @@ export const FEATURED_PROJECTS = [
     googlePlay:
       "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.hittheroad",
     logo: "/hittheroad/logo.png",
+    kind: "AI road trip planner",
+    tint: "#e2d8c8",
     screenshots: [
       "/hittheroad/screen-overview.png",
       "/hittheroad/screen-day.png",
@@ -163,11 +157,13 @@ export const FEATURED_PROJECTS = [
     name: "Olifant",
     tagline: "The Calm Family Organizer",
     description:
-      "One shared space for the whole family: plans, lists, chat and documents. Its AI inbox reads school emails, photos and PDFs and turns them into plans once a parent says yes. No ads, hosted in the EU, in 4 languages. Designed, built and shipped end-to-end: native iOS and Android apps plus a web app on one offline-first backend.",
+      "One shared space for the whole family: plans, lists, chat and documents. It reads school emails and turns them into plans once a parent says yes. Native iOS and Android apps plus a web app, in 4 languages.",
     technologies: ["SwiftUI", "Jetpack Compose", "React", "Supabase", "PowerSync", "LLM"],
     link: "https://olifant.family",
     webApp: "https://app.olifant.family",
     logo: "/olifant/logo.png",
+    kind: "Family organizer",
+    tint: "#d3dce2",
     screenshots: [
       "/olifant/screen-today.png",
       "/olifant/screen-inbox.png",
@@ -178,7 +174,7 @@ export const FEATURED_PROJECTS = [
     name: "Aida Yazılım",
     tagline: "AI Studio & Consultancy",
     description:
-      "My AI venture — helping companies adopt AI from strategy to shipped product. From PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad and Olifant.",
+      "My AI studio. It helps companies adopt AI, from strategy to shipped product: from PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad and Olifant.",
     technologies: ["Next.js", "TypeScript", "RAG", "OpenAI", "Vercel"],
     link: "https://aidayazilim.com",
     monogram: "a",
@@ -226,46 +222,25 @@ export const PROJECTS = [
 export const HOBBIES = [
   {
     name: "Video Production",
-    icon: "Video",
     description: "Professional video editing and direction. Director certificate holder.",
   },
   {
     name: "Music Production",
-    icon: "Music",
     description: "Creating and mixing music as a creative outlet.",
   },
   {
     name: "Travelling",
-    icon: "Plane",
     description: "Exploring new cultures and places around the world.",
   },
   {
     name: "Camping",
-    icon: "Tent",
     description: "Connecting with nature and outdoor adventures.",
   },
 ];
 
 export const NAV_ITEMS = [
-  { name: "Home", href: "/" },
+  { name: "Work", href: "/experience" },
   { name: "About", href: "/about" },
-  { name: "Experience", href: "/experience" },
   { name: "Contact", href: "/contact" },
 ];
 
-export const TERMINAL_COMMANDS: Record<string, string> = {
-  whoami: "Mücahit Gürbüz - Principal Engineer @ Babbel Labs",
-  location: "Berlin, Germany 🇩🇪",
-  skills: "TypeScript, React, Next.js, Node.js, AI Tools",
-  contact: "mucahitgurbuz@gmail.com",
-  github: "github.com/mucahitgurbuz",
-  linkedin: "linkedin.com/in/mucahit",
-  help: "Available commands: whoami, location, skills, contact, github, linkedin, clear",
-  clear: "",
-  sudo: "Nice try! 😄",
-  "rm -rf": "I see you like to live dangerously... 💀",
-  vim: "Exiting vim is left as an exercise for the reader 😈",
-  emacs: "I see you're a person of culture 🎩",
-  coffee: "☕ Here's your virtual coffee!",
-  beer: "🍺 Prost! (That's 'Cheers' in German)",
-};

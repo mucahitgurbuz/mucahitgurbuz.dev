@@ -1,165 +1,100 @@
 import type { Metadata } from "next";
-import {
-  ExperienceCard,
-  ProjectShowcase,
-  FeaturedProjects,
-} from "@/components/experience";
-import { EXPERIENCE, PROJECTS, EDUCATION } from "@/lib/constants";
-import { Separator } from "@/components/ui/separator";
+import { AppShowcase, ContactCta, SectionHead, WorkList } from "@/components/shared";
+import { EDUCATION, EXPERIENCE, FEATURED_PROJECTS, PROJECTS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Experience",
+  title: "Work",
   description:
-    "Explore Mücahit Gürbüz's professional experience, projects, and education in software engineering.",
+    "Mücahit Gürbüz's work: the apps he builds and runs, ten years of product engineering, side projects and education.",
 };
 
-export default function ExperiencePage() {
+const aida = FEATURED_PROJECTS.find((project) => project.monogram)!;
+
+const jobs = EXPERIENCE.map((job) => ({
+  period: job.period,
+  title: job.title,
+  place: `${job.company}, ${job.location.split(",")[0]}`,
+  description: job.description,
+  highlights: job.highlights,
+}));
+
+const studies = EDUCATION.map((study) => ({
+  period: study.period,
+  title: `${study.degree}, ${study.field}`,
+  place: `${study.school}, ${study.location.split(",")[0]}`,
+  description: study.courses ? study.courses.join(", ") : undefined,
+}));
+
+export default function WorkPage() {
   return (
-    <div className="min-h-screen py-12">
-      {/* Header */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-mono mb-4">
-            <span className="text-primary">$</span> cat experience.json
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            A decade of building products, leading teams, and shipping code that
-            matters.
-          </p>
+    <div className="wrap">
+      <section>
+        <SectionHead as="h1" title="Work">
+          Apps I run myself, the teams I build with, and the path that led here.
+        </SectionHead>
+        <AppShowcase />
+      </section>
+
+      <section className="grid grid-cols-1 gap-6 border-y border-contour py-10 min-[861px]:grid-cols-[1fr_1.4fr] min-[861px]:gap-16">
+        <div>
+          <h2 className="font-serif text-[clamp(30px,3vw,38px)] leading-tight">{aida.name}</h2>
+          <p className="mt-1 text-[15px] text-pencil">{aida.tagline}, founder</p>
+        </div>
+        <div>
+          <p className="mb-5 max-w-[52ch] text-[17px] leading-relaxed">{aida.description}</p>
+          <a href={aida.link as string} target="_blank" rel="noopener noreferrer" className="survey-link font-medium">
+            aidayazilim.com
+          </a>
         </div>
       </section>
 
-      {/* Featured Work */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8">
-            <span className="text-primary">const</span> featured = [
-          </h2>
-          <FeaturedProjects />
-          <p className="text-2xl font-mono text-muted-foreground mt-8">];</p>
-        </div>
+      <section>
+        <SectionHead title="Experience">Ten years on product teams, from Ankara to Berlin.</SectionHead>
+        <WorkList items={jobs} />
       </section>
 
-      <Separator className="max-w-4xl mx-auto" />
-
-      {/* Work Experience */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8">
-            <span className="text-primary">const</span> workExperience = [
-          </h2>
-          <div className="space-y-6">
-            {EXPERIENCE.map((exp, index) => (
-              <ExperienceCard
-                key={`${exp.company}-${exp.period}`}
-                title={exp.title}
-                company={exp.company}
-                location={exp.location}
-                period={exp.period}
-                description={exp.description}
-                technologies={exp.technologies}
-                highlights={exp.highlights}
-                index={index}
-              />
-            ))}
-          </div>
-          <p className="text-2xl font-mono text-muted-foreground mt-8">];</p>
-        </div>
-      </section>
-
-      <Separator className="max-w-4xl mx-auto" />
-
-      {/* Projects */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8">
-            <span className="text-primary">const</span> projects = [
-          </h2>
-          <ProjectShowcase projects={PROJECTS} />
-          <p className="text-2xl font-mono text-muted-foreground mt-8">];</p>
-        </div>
-      </section>
-
-      <Separator className="max-w-4xl mx-auto" />
-
-      {/* Education */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-mono font-bold mb-8">
-            <span className="text-primary">const</span> education = [
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {EDUCATION.map((edu, index) => (
-              <article
-                key={`${edu.school}-${edu.degree}`}
-                className="glass rounded-lg p-6 hover:border-primary/50 transition-all"
-              >
-                <h3 className="text-lg font-bold font-mono text-foreground mb-1">
-                  {edu.degree}
-                </h3>
-                <p className="text-primary font-mono text-sm mb-2">{edu.field}</p>
-                <p className="text-muted-foreground text-sm mb-2">{edu.school}</p>
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span>{edu.period}</span>
-                  {edu.gpa && (
-                    <span className="text-primary font-mono">GPA: {edu.gpa}</span>
-                  )}
-                </div>
-                {edu.courses && (
-                  <div className="mt-4 pt-4 border-t border-border">
-                    <p className="text-xs font-mono text-primary mb-2">
-                      // relevant courses
-                    </p>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      {edu.courses.map((course) => (
-                        <li key={course}>• {course}</li>
-                      ))}
-                    </ul>
+      <section>
+        <SectionHead title="Other projects" />
+        <div className="border-b border-contour">
+          {PROJECTS.map((project) => (
+            <div
+              key={project.name}
+              className="grid grid-cols-1 gap-2 border-t border-contour py-6 min-[861px]:grid-cols-[1fr_1.3fr] min-[861px]:gap-8"
+            >
+              <div>
+                <h3 className="font-serif text-2xl leading-tight">{project.name}</h3>
+                <p className="mt-1 text-sm text-pencil">{project.technologies.join(", ")}</p>
+              </div>
+              <div>
+                <p className="text-base text-[#2e3633]">{project.description}</p>
+                {(project.link || project.github) && (
+                  <div className="mt-3 flex gap-6 text-[15px] font-medium">
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener" className="survey-link">
+                        Website
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="survey-link">
+                        Source
+                      </a>
+                    )}
                   </div>
                 )}
-              </article>
-            ))}
-          </div>
-          <p className="text-2xl font-mono text-muted-foreground mt-8">];</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="glass rounded-lg p-8">
-            <h2 className="text-xl font-mono font-bold mb-6 text-center">
-              <span className="text-primary">console.log</span>(stats);
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary font-mono">
-                  10+
-                </p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
-              </div>
-              <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary font-mono">
-                  4
-                </p>
-                <p className="text-sm text-muted-foreground">Companies</p>
-              </div>
-              <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary font-mono">
-                  10M+
-                </p>
-                <p className="text-sm text-muted-foreground">Users Reached</p>
-              </div>
-              <div>
-                <p className="text-3xl md:text-4xl font-bold text-primary font-mono">
-                  ∞
-                </p>
-                <p className="text-sm text-muted-foreground">Lines of Code</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section>
+        <SectionHead title="Education">
+          Civil and geotechnical engineering at Middle East Technical University.
+        </SectionHead>
+        <WorkList items={studies} />
       </section>
+
+      <ContactCta />
     </div>
   );
 }
