@@ -183,6 +183,7 @@ export default async function SharedTripPage({ params }: PageProps) {
             Open in HitTheRoad
           </a>
           <StoreBadges
+            appName="HitTheRoad"
             appStore={APP_STORE_URL}
             googlePlay={PLAY_STORE_URL}
             className="justify-center"
