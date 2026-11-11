@@ -6,8 +6,7 @@ const W = 1600;
 const H = 900;
 const STEP = 7;
 const INTERVAL = 0.028;
-const WIDE_VIEW = `0 0 ${W} ${H}`;
-const NARROW_VIEW = "560 110 760 900";
+const VIEW = "630 60 880 860";
 
 type Point = [number, number];
 
@@ -15,8 +14,8 @@ const BERLIN: Point = [1010, 330];
 const ANKARA: Point = [1390, 735];
 
 const PLACES = [
-  { at: BERLIN, name: "Berlin", coord: "52.52° N  13.40° E", dx: 16 },
-  { at: ANKARA, name: "Ankara", coord: "39.93° N  32.86° E", dx: -16 },
+  { at: BERLIN, name: "Berlin", coord: "52.52° N  13.40° E", dx: 26 },
+  { at: ANKARA, name: "Ankara", coord: "39.93° N  32.86° E", dx: -26 },
 ];
 
 function hash(x: number, y: number) {
@@ -151,15 +150,9 @@ function buildTerrain(): Terrain {
 
 export function TopoMap({ className }: { className?: string }) {
   const [terrain, setTerrain] = useState<Terrain | null>(null);
-  const [narrow, setNarrow] = useState(false);
 
   useEffect(() => {
     setTerrain(buildTerrain());
-    const query = window.matchMedia("(max-width: 860px)");
-    const update = () => setNarrow(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
   }, []);
 
   const route = `M${ANKARA[0]} ${ANKARA[1]}Q${(BERLIN[0] + ANKARA[0]) / 2 + 150} ${(BERLIN[1] + ANKARA[1]) / 2 + 40} ${BERLIN[0]} ${BERLIN[1]}`;
@@ -167,34 +160,33 @@ export function TopoMap({ className }: { className?: string }) {
   return (
     <svg
       className={`topo ${className ?? ""}`}
-      viewBox={narrow ? NARROW_VIEW : WIDE_VIEW}
+      viewBox={VIEW}
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
       {terrain && (
         <>
-          <g className="reveal" style={{ transformOrigin: `${BERLIN[0]}px ${BERLIN[1]}px` }}>
+          <g>
             {terrain.levels.map((level, i) => (
               <path key={i} d={level.d} className={level.index ? "lv ix" : "lv"} />
             ))}
             {terrain.labels.map(({ at, value }) => (
-              <text key={value} x={at[0]} y={at[1] + 4} className="elev" textAnchor="middle">
+              <text key={value} x={at[0]} y={at[1] + 6} className="elev" textAnchor="middle">
                 {value}
               </text>
             ))}
           </g>
-          <g className="later">
+          <g>
             <path className="route" d={route} />
             {PLACES.map(({ at, name, coord, dx }) => {
               const anchor = dx > 0 ? "start" : "end";
               return (
                 <g key={name}>
-                  <circle cx={at[0]} cy={at[1]} r={12} className="ring" />
-                  <circle cx={at[0]} cy={at[1]} r={4.5} className="pin" />
-                  <text x={at[0] + dx} y={at[1] - 3} className="place" textAnchor={anchor}>
+                  <circle cx={at[0]} cy={at[1]} r={12} className="pin" />
+                  <text x={at[0] + dx} y={at[1] - 2} className="place" textAnchor={anchor}>
                     {name}
                   </text>
-                  <text x={at[0] + dx} y={at[1] + 14} className="coord" textAnchor={anchor}>
+                  <text x={at[0] + dx} y={at[1] + 24} className="coord" textAnchor={anchor}>
                     {coord}
                   </text>
                 </g>

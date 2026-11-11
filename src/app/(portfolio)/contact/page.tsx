@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact";
+import { CopyEmail } from "@/components/shared";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -17,44 +18,39 @@ const ELSEWHERE = [
 
 export default function ContactPage() {
   return (
-    <div className="wrap">
-      <section className="grid grid-cols-1 gap-16 pt-[clamp(48px,8vw,110px)] pb-[clamp(60px,8vw,100px)] min-[961px]:grid-cols-[1fr_1fr] min-[961px]:gap-24">
-        <div>
-          <h1 className="display mb-6 text-[clamp(52px,7vw,92px)] leading-[0.98] tracking-[-0.035em]">
-            Write to me
-          </h1>
-          <p className="mb-10 max-w-[38ch] text-[clamp(18px,1.6vw,20px)] leading-relaxed">
-            A project, a role, or a question about building with AI. I usually reply within
-            two days.
-          </p>
+    <section className="wrap grid grid-cols-1 gap-x-20 gap-y-12 pt-[clamp(28px,5vw,72px)] pb-[clamp(64px,9vw,120px)] min-[961px]:grid-cols-2">
+      <div>
+        <h1 className="statement">Write to me</h1>
+        <p className="lede mt-5">
+          A project, a role, or a question about building with AI. I usually reply within two
+          days.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
           <a
             href={`mailto:${SITE_CONFIG.email}`}
-            className="survey-link display break-words text-[clamp(24px,2.8vw,36px)] leading-tight"
+            className="link break-all text-[clamp(1.25rem,1rem+1vw,1.75rem)] font-[560] tracking-[-0.02em]"
           >
             {SITE_CONFIG.email}
           </a>
-          <dl className="mt-12 space-y-5 text-[15px]">
-            <div>
-              <dt className="text-pencil">Based in</dt>
-              <dd>{SITE_CONFIG.location}</dd>
-            </div>
-            <div>
-              <dt className="text-pencil">Elsewhere</dt>
-              <dd className="flex flex-wrap gap-x-6 gap-y-2">
-                {ELSEWHERE.map(({ label, href }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="survey-link">
-                    {label}
-                  </a>
-                ))}
-              </dd>
-            </div>
-          </dl>
+          <CopyEmail />
         </div>
+        <dl className="mt-12 grid grid-cols-[auto_1fr] gap-x-8 gap-y-4 border-t border-rule pt-6">
+          <dt className="text-ink-soft">Based in</dt>
+          <dd>{SITE_CONFIG.location}</dd>
+          <dt className="text-ink-soft">Elsewhere</dt>
+          <dd className="flex flex-wrap gap-x-6 gap-y-2">
+            {ELSEWHERE.map(({ label, href }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="link">
+                {label}
+              </a>
+            ))}
+          </dd>
+        </dl>
+      </div>
 
-        <div className="min-[961px]:pt-4">
-          <ContactForm />
-        </div>
-      </section>
-    </div>
+      <div className="rounded-[20px] bg-mist p-[clamp(20px,4vw,40px)]">
+        <ContactForm />
+      </div>
+    </section>
   );
 }

@@ -1,75 +1,78 @@
 import Image from "next/image";
-import { FEATURED_PROJECTS } from "@/lib/constants";
-
-const APPS = FEATURED_PROJECTS.filter((project) => project.screenshots);
+import { APPS } from "@/lib/constants";
+import { StoreBadges } from "./StoreBadges";
 
 type App = (typeof APPS)[number];
 
-function Phone({ src, alt, className }: { src: string; alt: string; className: string }) {
-  return (
-    <div
-      className={`absolute w-[34%] rounded-[14%/6.5%] bg-white p-[1.1%] shadow-[0_30px_60px_-30px_rgba(28,34,32,.45),0_0_0_1px_rgba(28,34,32,.06)] ${className}`}
-    >
-      <Image
-        src={src}
-        alt={alt}
-        width={1206}
-        height={2622}
-        sizes="(max-width: 860px) 32vw, 240px"
-        className="block h-auto w-full rounded-[13%/6%]"
-      />
-    </div>
-  );
+// On wide screens the first screen sits in the middle, raised, with the
+// other two beside it. On narrow screens the three scroll sideways.
+const PLACEMENT = [
+  "min-[900px]:order-2 min-[900px]:w-[37%]",
+  "min-[900px]:order-1 min-[900px]:mt-[9%] min-[900px]:w-[29%]",
+  "min-[900px]:order-3 min-[900px]:mt-[9%] min-[900px]:w-[29%]",
+];
+
+function screenName(src: string) {
+  return src.slice(src.lastIndexOf("-") + 1, src.lastIndexOf("."));
 }
 
-function AppRow({ app, flip }: { app: App; flip: boolean }) {
-  const [first, second] = app.screenshots ?? [];
+function AppBand({ app, flip, eager }: { app: App; flip: boolean; eager: boolean }) {
   const links = [
-    app.appStore && { href: app.appStore, label: "App Store" },
-    app.googlePlay && { href: app.googlePlay, label: "Google Play" },
-    { href: app.link as string, label: "Website" },
+    { href: app.link, label: "Website" },
     app.webApp && { href: app.webApp, label: "Web app" },
   ].filter((link): link is { href: string; label: string } => Boolean(link));
 
   return (
-    <article
-      className={`mb-[clamp(64px,9vw,120px)] grid grid-cols-1 items-center gap-7 min-[861px]:gap-[clamp(32px,6vw,96px)] ${
-        flip ? "min-[861px]:grid-cols-[1fr_1.25fr]" : "min-[861px]:grid-cols-[1.25fr_1fr]"
-      }`}
-    >
+    <article id={app.slug} className="band overflow-hidden" style={{ background: app.tint }}>
       <div
-        className={`relative aspect-[6/5] overflow-hidden rounded-md ${flip ? "min-[861px]:order-2" : ""}`}
-        style={{ background: app.tint }}
+        className={`wrap grid grid-cols-1 items-center gap-x-[clamp(32px,5vw,80px)] gap-y-12 py-[clamp(56px,8vw,112px)] ${
+          flip
+            ? "min-[900px]:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"
+            : "min-[900px]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+        }`}
       >
-        <Phone src={first} alt={`${app.name} app screen`} className="left-[16%] top-[11%]" />
-        {second && (
-          <Phone src={second} alt={`${app.name} app screen`} className="left-[52%] top-[22%]" />
-        )}
-      </div>
-
-      <div>
-        <div className="mb-5 flex items-center gap-4">
-          <Image
-            src={app.logo as string}
-            alt=""
-            width={112}
-            height={112}
-            className="h-14 w-14 rounded-[13px] shadow-[0_0_0_1px_rgba(28,34,32,.08)]"
-          />
-          <div>
-            <h3 className="font-serif text-[clamp(32px,3.4vw,42px)] leading-none tracking-[-0.02em]">
-              {app.name}
-            </h3>
-            <p className="mt-1.5 text-[15px] text-pencil">{app.kind}</p>
+        <div className={flip ? "min-[900px]:order-2" : undefined}>
+          <div className="mb-6 flex items-center gap-4">
+            <Image
+              src={app.logo}
+              alt=""
+              width={128}
+              height={128}
+              className="h-14 w-14 rounded-[22%] shadow-[0_0_0_1px_rgb(255_255_255/0.18)]"
+            />
+            <p className="text-white/80">{app.kind}</p>
+          </div>
+          <h2 className="app-name">{app.name}</h2>
+          <p className="mt-6 max-w-[44ch] text-[clamp(1.06rem,1rem+0.3vw,1.2rem)] text-white/90">
+            {app.description}
+          </p>
+          <p className="mt-4 text-[15px] text-white/80">{app.technologies.join(", ")}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+            {app.appStore && app.googlePlay && (
+              <StoreBadges appName={app.name} appStore={app.appStore} googlePlay={app.googlePlay} />
+            )}
+            {links.map(({ href, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener" className="link">
+                {label}
+              </a>
+            ))}
           </div>
         </div>
-        <p className="mb-5 max-w-[40ch] text-[17px] leading-relaxed">{app.description}</p>
-        <p className="mb-6 text-sm text-pencil">{app.technologies.join(", ")}</p>
-        <div className="flex flex-wrap gap-x-6 gap-y-3 text-[15px] font-medium">
-          {links.map(({ href, label }) => (
-            <a key={label} href={href} target="_blank" rel="noopener" className="survey-link">
-              {label}
-            </a>
+
+        <div className="-mx-[clamp(20px,5vw,64px)] flex snap-x snap-mandatory gap-5 overflow-x-auto px-[clamp(20px,5vw,64px)] pb-10 [scrollbar-width:none] min-[900px]:mx-0 min-[900px]:items-start min-[900px]:justify-center min-[900px]:gap-[2.5%] min-[900px]:overflow-visible min-[900px]:px-0 min-[900px]:pb-0">
+          {app.screenshots.map((src, i) => (
+            <div key={src} className={`phone w-[62%] snap-center min-[900px]:shrink ${PLACEMENT[i]}`}>
+              <div>
+                <Image
+                  src={src}
+                  alt={`${app.name}, ${screenName(src)} screen`}
+                  width={1206}
+                  height={2622}
+                  sizes="(max-width: 899px) 62vw, 260px"
+                  loading={eager ? "eager" : "lazy"}
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -79,10 +82,10 @@ function AppRow({ app, flip }: { app: App; flip: boolean }) {
 
 export function AppShowcase() {
   return (
-    <div>
+    <>
       {APPS.map((app, i) => (
-        <AppRow key={app.name} app={app} flip={i % 2 === 1} />
+        <AppBand key={app.name} app={app} flip={i % 2 === 1} eager={i === 0} />
       ))}
-    </div>
+    </>
   );
 }

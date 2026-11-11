@@ -5,9 +5,6 @@ import { Loader2 } from "lucide-react";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
-const field =
-  "w-full border-0 border-b border-contour bg-transparent px-0 py-3 text-[17px] text-ink placeholder:text-pencil/70 focus:border-ink focus:outline-none disabled:opacity-50";
-
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -45,10 +42,10 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border-t border-contour pt-8">
-        <h2 className="font-serif text-3xl">Message sent</h2>
-        <p className="mt-3 text-pencil">Thanks for writing. I will reply by email.</p>
-        <button type="button" onClick={() => setStatus("idle")} className="survey-link mt-8 font-medium">
+      <div role="status">
+        <h2 className="title">Message sent</h2>
+        <p className="mt-3 text-ink-soft">Thanks for writing. I will reply by email.</p>
+        <button type="button" onClick={() => setStatus("idle")} className="link mt-8">
           Send another message
         </button>
       </div>
@@ -56,24 +53,24 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <input type="checkbox" name="botcheck" className="hidden" />
       <input type="hidden" name="from_name" value="Portfolio Contact Form" />
       <input type="hidden" name="subject" value="New message from your portfolio" />
 
       <label className="block">
-        <span className="text-[15px] text-pencil">Name</span>
-        <input name="name" autoComplete="name" required disabled={status === "loading"} className={field} />
+        <span className="text-[15px] font-medium">Name</span>
+        <input name="name" autoComplete="name" required disabled={status === "loading"} className="field" />
       </label>
 
       <label className="block">
-        <span className="text-[15px] text-pencil">Email</span>
-        <input name="email" type="email" autoComplete="email" required disabled={status === "loading"} className={field} />
+        <span className="text-[15px] font-medium">Email</span>
+        <input name="email" type="email" autoComplete="email" required disabled={status === "loading"} className="field" />
       </label>
 
       <label className="block">
-        <span className="text-[15px] text-pencil">Message</span>
-        <textarea name="message" rows={5} required disabled={status === "loading"} className={`${field} resize-none`} />
+        <span className="text-[15px] font-medium">Message</span>
+        <textarea name="message" rows={5} required disabled={status === "loading"} className="field resize-y" />
       </label>
 
       {status === "error" && (
@@ -85,7 +82,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 font-medium text-paper transition-colors hover:bg-[#303836] disabled:opacity-60"
+        className="btn"
       >
         {status === "loading" && <Loader2 className="h-4 w-4 animate-spin" />}
         {status === "loading" ? "Sending" : "Send message"}
