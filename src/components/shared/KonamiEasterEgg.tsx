@@ -59,7 +59,7 @@ export function KonamiEasterEgg() {
               animate={{ scale: 1, opacity: 1, rotateX: 0 }}
               exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-paper rounded-md p-8 max-w-lg w-full text-center border border-contour shadow-2xl"
+              className="bg-background rounded-md p-8 max-w-lg w-full text-center border border-border shadow-2xl"
             >
               <Button
                 variant="ghost"
@@ -87,7 +87,7 @@ export function KonamiEasterEgg() {
                 You found the Konami Code Easter Egg!
               </p>
 
-              <div className="bg-paper-deep rounded-md p-4 font-mono text-sm mb-6">
+              <div className="bg-muted rounded-md p-4 font-mono text-sm mb-6">
                 <p className="text-muted-foreground mb-2">You entered:</p>
                 <p className="text-primary">
                   ↑ ↑ ↓ ↓ ← → ← → B A

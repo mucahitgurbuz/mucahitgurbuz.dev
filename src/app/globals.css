@@ -2,43 +2,43 @@
 @import "tw-animate-css";
 
 :root {
-  --paper: #e8ebe7;
-  --paper-deep: #dde1dc;
-  --ink: #1c2220;
-  --pencil: #5a6460;
-  --contour: #adb7b1;
-  --contour-index: #8a9690;
-  --survey: #c2531d;
+  --ground: #ffffff;
+  --mist: #eef3f2;
+  --ink: #0f2b31;
+  --ink-soft: #4a6268;
+  --rule: #d3dddc;
+  --amber: #f6a737;
+  --focus: var(--ink);
 
-  --background: var(--paper);
+  --background: var(--ground);
   --foreground: var(--ink);
-  --card: var(--paper);
+  --card: var(--ground);
   --card-foreground: var(--ink);
-  --popover: var(--paper);
+  --popover: var(--ground);
   --popover-foreground: var(--ink);
   --primary: var(--ink);
-  --primary-foreground: var(--paper);
-  --secondary: var(--paper-deep);
+  --primary-foreground: var(--ground);
+  --secondary: var(--mist);
   --secondary-foreground: var(--ink);
-  --muted: var(--paper-deep);
-  --muted-foreground: var(--pencil);
-  --accent: var(--paper-deep);
+  --muted: var(--mist);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--mist);
   --accent-foreground: var(--ink);
-  --destructive: #a3341b;
-  --destructive-foreground: var(--paper);
-  --border: var(--contour);
-  --input: var(--contour);
-  --ring: var(--survey);
-  --radius: 0.375rem;
+  --destructive: #b3261e;
+  --destructive-foreground: var(--ground);
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--ink);
+  --radius: 0.625rem;
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-paper-deep: var(--paper-deep);
+  --color-ground: var(--ground);
+  --color-mist: var(--mist);
   --color-ink: var(--ink);
-  --color-pencil: var(--pencil);
-  --color-contour: var(--contour);
-  --color-survey: var(--survey);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-amber: var(--amber);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -59,13 +59,12 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
   --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
-  --radius-xl: calc(var(--radius) + 6px);
+  --radius-lg: calc(var(--radius) + 6px);
+  --radius-xl: calc(var(--radius) + 14px);
 
-  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -77,151 +76,271 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-size: 17px;
+    line-height: 1.6;
     overflow-x: hidden;
   }
 
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
   ::selection {
-    background: var(--survey);
-    color: var(--paper);
+    background: var(--amber);
+    color: var(--ink);
   }
 
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid var(--survey);
-    outline-offset: 4px;
-    border-radius: 2px;
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
   }
 }
 
 @layer components {
   .wrap {
     width: 100%;
-    max-width: 1240px;
+    max-width: 1280px;
     margin-inline: auto;
-    padding-inline: clamp(24px, 5vw, 72px);
+    padding-inline: clamp(20px, 5vw, 64px);
   }
 
-  .display {
-    font-family: var(--font-serif);
-    font-weight: 300;
-    font-variation-settings: "opsz" 72;
+  .section {
+    padding-block: clamp(64px, 9vw, 120px);
+  }
+
+  /* A full-bleed block of solid color with light text on it. */
+  .band {
+    --focus: var(--amber);
+    color: #fff;
+  }
+
+  .wide {
+    font-variation-settings: "wdth" 125;
+  }
+
+  .statement {
+    font-weight: 560;
+    font-size: clamp(2.05rem, 1.15rem + 3.9vw, 4rem);
+    line-height: 1.1;
     letter-spacing: -0.03em;
+    text-wrap: balance;
   }
 
-  .survey-link {
+  .title {
+    font-variation-settings: "wdth" 125;
+    font-weight: 750;
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+
+  .app-name {
+    font-variation-settings: "wdth" 125;
+    font-weight: 800;
+    font-size: clamp(2.3rem, 1.4rem + 3vw, 3.7rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .item-title {
+    font-variation-settings: "wdth" 112;
+    font-weight: 680;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .lede {
+    max-width: 52ch;
+    font-size: clamp(1.06rem, 1rem + 0.3vw, 1.2rem);
+    color: var(--ink-soft);
+  }
+
+  .band .lede {
+    color: rgb(255 255 255 / 0.82);
+  }
+
+  .link {
+    font-weight: 550;
     text-decoration: underline;
-    text-decoration-color: var(--survey);
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 6px;
-    transition: text-underline-offset 0.2s;
+    text-decoration-color: var(--amber);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 0.15s;
   }
 
-  .survey-link:hover {
-    text-underline-offset: 3px;
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 600;
+    transition:
+      background-color 0.15s,
+      color 0.15s;
+  }
+
+  .btn:hover {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .band .btn {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .band .btn:hover {
+    background: var(--amber);
+  }
+
+  /* Small pictures set inside the opening sentence. */
+  .chip {
+    display: inline-block;
+    height: 0.92em;
+    vertical-align: -0.1em;
+    object-fit: cover;
+    animation: chip-in 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+  }
+
+  /* The cut-out portrait stands taller than the line without pushing lines apart. */
+  .chip.bust {
+    width: auto;
+    height: 1.5em;
+    margin-top: -0.64em;
+    vertical-align: -0.2em;
+  }
+
+  @keyframes chip-in {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+
+  .phone {
+    flex-shrink: 0;
+    border-radius: 15.5% / 7.15%;
+    background: #071417;
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.16),
+      0 36px 60px -28px rgb(0 0 0 / 0.6);
+  }
+
+  .phone > div {
+    padding: 2.6%;
+  }
+
+  .phone img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 13.4% / 6.15%;
+  }
+
+  .field {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 12px 14px;
+    border: 1px solid #71878b;
+    border-radius: var(--radius);
+    background: var(--ground);
+    color: var(--ink);
+    font-size: 1rem;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
+  }
+
+  .field:hover {
+    border-color: var(--ink);
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgb(246 167 55 / 0.45);
+  }
+
+  .field:disabled {
+    opacity: 0.5;
   }
 
   .topo .lv {
     fill: none;
-    stroke: var(--contour);
-    stroke-width: 1;
+    stroke: #c3d0ce;
+    stroke-width: 1.5;
     stroke-linecap: round;
   }
 
   .topo .lv.ix {
-    stroke: var(--contour-index);
-    stroke-width: 1.35;
+    stroke: #9db0ad;
+    stroke-width: 2;
   }
 
   .topo .elev {
-    font: 500 10.5px var(--font-sans);
-    fill: var(--contour-index);
+    font: 500 17px var(--font-sans);
+    fill: #6f8784;
     paint-order: stroke;
-    stroke: var(--paper);
-    stroke-width: 5px;
+    stroke: var(--mist);
+    stroke-width: 8px;
     font-variant-numeric: tabular-nums;
   }
 
   .topo .route {
     fill: none;
-    stroke: var(--survey);
-    stroke-width: 1.6;
-    stroke-dasharray: 2 7;
+    stroke: var(--ink);
+    stroke-width: 3.5;
+    stroke-dasharray: 3 13;
     stroke-linecap: round;
   }
 
   .topo .pin {
-    fill: var(--survey);
-  }
-
-  .topo .ring {
-    fill: none;
-    stroke: var(--survey);
-    stroke-width: 1;
-    opacity: 0.5;
+    fill: var(--amber);
+    stroke: var(--ink);
+    stroke-width: 3.5;
   }
 
   .topo .place,
   .topo .coord {
     paint-order: stroke;
-    stroke: var(--paper);
-    stroke-width: 6px;
+    stroke: var(--mist);
+    stroke-width: 10px;
   }
 
   .topo .place {
-    font: 500 13px var(--font-sans);
+    font: 700 27px var(--font-sans);
     fill: var(--ink);
   }
 
   .topo .coord {
-    font: 400 12px var(--font-sans);
-    fill: var(--pencil);
+    font: 400 20px var(--font-sans);
+    fill: var(--ink-soft);
     font-variant-numeric: tabular-nums;
   }
 
-  .topo .reveal {
-    transform-box: view-box;
-    animation: topo-reveal 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-
-  .topo .later {
-    animation: topo-fade 1.2s ease 1.5s both;
-  }
-
-  @keyframes topo-reveal {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes topo-fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .topo .reveal,
-    .topo .later {
+    .chip {
       animation: none;
     }
   }

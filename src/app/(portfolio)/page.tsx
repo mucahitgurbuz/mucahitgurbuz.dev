@@ -12,33 +12,19 @@ const RECENT_WORK = EXPERIENCE.slice(0, 3).map((job) => ({
 
 export default function Home() {
   return (
-    <div className="wrap">
+    <>
       <Hero />
+      <AppShowcase />
 
-      <section>
-        <SectionHead
-          title={
-            <>
-              Apps I build
-              <br />
-              and run
-            </>
-          }
-        >
-          Each one designed, built and shipped by me, from the first sketch to the store listing.
-        </SectionHead>
-        <AppShowcase />
-      </section>
-
-      <section>
+      <section className="wrap section">
         <SectionHead title="Work">Ten years on product teams, from Ankara to Berlin.</SectionHead>
         <WorkList items={RECENT_WORK} />
-        <Link href="/experience" className="survey-link mt-8 inline-block font-medium">
+        <Link href="/experience" className="link mt-8 inline-block">
           All work and education
         </Link>
       </section>
 
       <ContactCta />
-    </div>
+    </>
   );
 }

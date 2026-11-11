@@ -8,6 +8,7 @@ export const SITE_CONFIG = {
   phone: "+49 176 8325 8742",
   location: "Berlin, Germany",
   avatar: "https://avatars.githubusercontent.com/u/22075688?v=4",
+  cutout: "/mucahit-cutout.png",
 };
 
 export const SOCIAL_LINKS = {
@@ -135,6 +136,7 @@ export const EDUCATION = [
 export const FEATURED_PROJECTS = [
   {
     name: "HitTheRoad",
+    slug: "hittheroad",
     tagline: "Your AI Road Trip Planner",
     description:
       "Tell it where and when. It plans the route day by day, with scenic stops, food and places to stay, then rides along as your copilot. Live on the App Store and Google Play in 5 languages.",
@@ -146,7 +148,7 @@ export const FEATURED_PROJECTS = [
       "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.hittheroad",
     logo: "/hittheroad/logo.png",
     kind: "AI road trip planner",
-    tint: "#e2d8c8",
+    tint: "#22424f",
     screenshots: [
       "/hittheroad/screen-overview.png",
       "/hittheroad/screen-day.png",
@@ -155,6 +157,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     name: "Olifant",
+    slug: "olifant",
     tagline: "The Calm Family Organizer",
     description:
       "One shared space for the whole family: plans, lists, chat and documents. It reads school emails and turns them into plans once a parent says yes. Native iOS and Android apps plus a web app, in 4 languages.",
@@ -163,7 +166,7 @@ export const FEATURED_PROJECTS = [
     webApp: "https://app.olifant.family",
     logo: "/olifant/logo.png",
     kind: "Family organizer",
-    tint: "#d3dce2",
+    tint: "#2f5d7c",
     screenshots: [
       "/olifant/screen-today.png",
       "/olifant/screen-inbox.png",
@@ -180,6 +183,20 @@ export const FEATURED_PROJECTS = [
     monogram: "a",
   },
 ];
+
+type FeaturedProject = (typeof FEATURED_PROJECTS)[number];
+
+// The featured projects that are apps with screens to show.
+export const APPS = FEATURED_PROJECTS.filter(
+  (
+    project,
+  ): project is FeaturedProject & {
+    slug: string;
+    logo: string;
+    tint: string;
+    screenshots: string[];
+  } => Boolean(project.slug && project.logo && project.tint && project.screenshots),
+);
 
 export const PROJECTS = [
   {

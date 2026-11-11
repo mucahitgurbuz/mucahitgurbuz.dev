@@ -1,34 +1,57 @@
+import { Fragment } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { TopoMap } from "./TopoMap";
+import { APPS, SITE_CONFIG } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative">
-      <div className="absolute left-1/2 top-[-100px] bottom-[-60px] w-screen -translate-x-1/2 overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,.25)_30%,#000_55%),linear-gradient(to_bottom,#000_70%,transparent_100%)] [mask-composite:intersect] max-[860px]:bottom-auto max-[860px]:top-[-90px] max-[860px]:h-[560px] max-[860px]:opacity-55 max-[860px]:[mask-image:linear-gradient(to_bottom,#000_30%,transparent_100%)]">
-        <TopoMap className="block h-full w-full" />
-      </div>
-
-      <div className="relative z-10 flex min-h-[min(78vh,720px)] flex-col justify-center pt-10 pb-20 max-[860px]:min-h-0 max-[860px]:pt-[170px] max-[860px]:pb-10">
-        <h1 className="display mb-[clamp(28px,4vw,44px)] text-[clamp(68px,11.5vw,148px)] leading-[0.9] tracking-[-0.04em]">
-          <span className="block">Mücahit</span>
-          <span className="block pl-[0.55em] max-[860px]:pl-[0.35em]">Gürbüz</span>
-        </h1>
-        <p className="mb-10 max-w-[31ch] text-[clamp(18px,1.7vw,21px)] leading-[1.55]">
-          Principal Engineer at Babbel Labs in Berlin. I trained as a civil
-          engineer, spent ten years building web and mobile products, and ship
-          my own apps on the side.
-        </p>
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-4 font-medium">
-          <Link
-            href="/experience"
-            className="rounded-full bg-ink px-6 py-3.5 text-paper transition-colors hover:bg-[#303836]"
-          >
-            See my work
-          </Link>
-          <Link href="/contact" className="survey-link">
-            Get in touch
-          </Link>
-        </div>
+    <section className="wrap pt-[clamp(28px,5vw,72px)] pb-[clamp(56px,7vw,96px)]">
+      <h1 className="statement max-w-[21em]">
+        I&apos;m{" "}
+        <span className="whitespace-nowrap">
+          <Image
+            src={SITE_CONFIG.cutout}
+            alt=""
+            width={348}
+            height={421}
+            priority
+            className="chip bust mr-[0.1em]"
+          />
+          Mücahit
+        </span>{" "}
+        Gürbüz, principal engineer at Babbel Labs in Berlin. On the side I build and run my own
+        apps:{" "}
+        {APPS.map((app, i) => (
+          <Fragment key={app.name}>
+            {i > 0 && " and "}
+            <a
+              href={`#${app.slug}`}
+              className="whitespace-nowrap underline decoration-amber decoration-[0.07em] underline-offset-[0.14em] transition-colors hover:decoration-ink"
+            >
+              <Image
+                src={app.logo}
+                alt=""
+                width={128}
+                height={128}
+                className="chip mr-[0.16em] w-[0.92em] rounded-[22%]"
+                style={{ animationDelay: `${0.25 + i * 0.15}s` }}
+              />
+              {app.name}
+            </a>
+          </Fragment>
+        ))}
+        .
+      </h1>
+      <p className="lede mt-[clamp(20px,2.5vw,32px)]">
+        I trained as a civil engineer and have spent ten years building web and mobile products.
+      </p>
+      <div className="mt-[clamp(28px,3vw,40px)] flex flex-wrap items-center gap-x-8 gap-y-4">
+        <Link href="/experience" className="btn">
+          See my work
+        </Link>
+        <Link href="/contact" className="link">
+          Write to me
+        </Link>
       </div>
     </section>
   );

@@ -27,67 +27,63 @@ const studies = EDUCATION.map((study) => ({
 
 export default function WorkPage() {
   return (
-    <div className="wrap">
-      <section>
+    <>
+      <section className="wrap pt-[clamp(28px,5vw,72px)] pb-[clamp(40px,5vw,72px)]">
         <SectionHead as="h1" title="Work">
           Apps I run myself, the teams I build with, and the path that led here.
         </SectionHead>
-        <AppShowcase />
       </section>
 
-      <section className="grid grid-cols-1 gap-6 border-y border-contour py-10 min-[861px]:grid-cols-[1fr_1.4fr] min-[861px]:gap-16">
-        <div>
-          <h2 className="font-serif text-[clamp(30px,3vw,38px)] leading-tight">{aida.name}</h2>
-          <p className="mt-1 text-[15px] text-pencil">{aida.tagline}, founder</p>
-        </div>
-        <div>
-          <p className="mb-5 max-w-[52ch] text-[17px] leading-relaxed">{aida.description}</p>
-          <a href={aida.link as string} target="_blank" rel="noopener noreferrer" className="survey-link font-medium">
-            aidayazilim.com
-          </a>
+      <AppShowcase />
+
+      <section className="bg-mist">
+        <div className="wrap grid grid-cols-1 gap-x-16 gap-y-5 py-[clamp(48px,6vw,80px)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+          <div>
+            <h2 className="title">{aida.name}</h2>
+            <p className="mt-2 text-ink-soft">{aida.tagline}, founder</p>
+          </div>
+          <div>
+            <p className="mb-5 max-w-[52ch] text-[clamp(1.06rem,1rem+0.3vw,1.2rem)]">{aida.description}</p>
+            <a href={aida.link as string} target="_blank" rel="noopener noreferrer" className="link">
+              aidayazilim.com
+            </a>
+          </div>
         </div>
       </section>
 
-      <section>
+      <section className="wrap section">
         <SectionHead title="Experience">Ten years on product teams, from Ankara to Berlin.</SectionHead>
         <WorkList items={jobs} />
       </section>
 
-      <section>
+      <section className="wrap pb-[clamp(64px,9vw,120px)]">
         <SectionHead title="Other projects" />
-        <div className="border-b border-contour">
+        <div className="grid grid-cols-1 gap-x-16 border-b border-rule min-[900px]:grid-cols-2">
           {PROJECTS.map((project) => (
-            <div
-              key={project.name}
-              className="grid grid-cols-1 gap-2 border-t border-contour py-6 min-[861px]:grid-cols-[1fr_1.3fr] min-[861px]:gap-8"
-            >
-              <div>
-                <h3 className="font-serif text-2xl leading-tight">{project.name}</h3>
-                <p className="mt-1 text-sm text-pencil">{project.technologies.join(", ")}</p>
-              </div>
-              <div>
-                <p className="text-base text-[#2e3633]">{project.description}</p>
-                {(project.link || project.github) && (
-                  <div className="mt-3 flex gap-6 text-[15px] font-medium">
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener" className="survey-link">
-                        Website
-                      </a>
-                    )}
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="survey-link">
-                        Source
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
+            <div key={project.name} className="border-t border-rule py-7">
+              <h3 className="item-title">{project.name}</h3>
+              <p className="mt-2 max-w-[52ch]">{project.description}</p>
+              <p className="mt-2 text-[15px] text-ink-soft">{project.technologies.join(", ")}</p>
+              {(project.link || project.github) && (
+                <div className="mt-4 flex gap-6">
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener" className="link">
+                      Website
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="link">
+                      Source
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
       </section>
 
-      <section>
+      <section className="wrap pb-[clamp(64px,9vw,120px)]">
         <SectionHead title="Education">
           Civil and geotechnical engineering at Middle East Technical University.
         </SectionHead>
@@ -95,6 +91,6 @@ export default function WorkPage() {
       </section>
 
       <ContactCta />
-    </div>
+    </>
   );
 }
