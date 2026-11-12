@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Mücahit Gürbüz",
   },
   description:
-    "Principal Engineer at Babbel Labs, the AI-first company under Babbel Group building cutting-edge language learning apps, based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, shipping AI products like HitTheRoad and Olifant.",
+    "Principal Engineer at Babbel Labs, the AI-first company under Babbel Group building cutting-edge language learning apps, based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, shipping AI products like HitTheRoad, Olifant and Junto.",
   keywords: [
     "Principal Engineer",
     "Software Engineer",

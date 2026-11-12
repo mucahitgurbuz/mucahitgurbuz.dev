@@ -23,7 +23,7 @@ export function Hero() {
         apps:{" "}
         {APPS.map((app, i) => (
           <Fragment key={app.name}>
-            {i > 0 && " and "}
+            {i > 0 && (i === APPS.length - 1 ? " and " : ", ")}
             <a
               href={`#${app.slug}`}
               className="whitespace-nowrap underline decoration-amber decoration-[0.07em] underline-offset-[0.14em] transition-colors hover:decoration-ink"

@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: "Mücahit Gürbüz",
   title: "Principal Engineer",
   description:
-    "Principal Engineer at Babbel Labs — the AI-first company under Babbel Group building cutting-edge language learning apps — based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, an AI studio behind products like HitTheRoad, live on the App Store, and Olifant, a family organizer. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
+    "Principal Engineer at Babbel Labs — the AI-first company under Babbel Group building cutting-edge language learning apps — based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, an AI studio behind products like HitTheRoad, live on the App Store, Olifant, a family organizer, and Junto, a group card app. Passionate about AI transformation and enhancing team collaboration through knowledge-sharing.",
   url: "https://mucahitgurbuz.dev",
   email: "mucahitgurbuz@gmail.com",
   phone: "+49 176 8325 8742",
@@ -174,10 +174,23 @@ export const FEATURED_PROJECTS = [
     ],
   },
   {
+    name: "Junto",
+    slug: "junto",
+    tagline: "Many Voices. One Card.",
+    description:
+      "The group card for offices, schools and nurseries. One link, everyone writes a message or adds a photo with no sign-up, and the card opens like an envelope on the day. Can be printed as a hardcover book. Web app in 4 languages.",
+    technologies: ["Next.js", "React", "TypeScript", "Supabase", "Stripe", "LLM"],
+    link: "https://junto.cards",
+    logo: "/junto/logo.png",
+    kind: "Group card app",
+    tint: "#2b3576",
+    screenshots: ["/junto/screen-home.png", "/junto/screen-card.png", "/junto/screen-pricing.png"],
+  },
+  {
     name: "Aida Yazılım",
     tagline: "AI Studio & Consultancy",
     description:
-      "My AI studio. It helps companies adopt AI, from strategy to shipped product: from PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad and Olifant.",
+      "My AI studio. It helps companies adopt AI, from strategy to shipped product: from PorlandAI, a RAG assistant serving 1000+ employees across 36 departments, to consumer apps like HitTheRoad, Olifant and Junto.",
     technologies: ["Next.js", "TypeScript", "RAG", "OpenAI", "Vercel"],
     link: "https://aidayazilim.com",
     monogram: "a",
