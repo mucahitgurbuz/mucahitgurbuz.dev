@@ -54,8 +54,8 @@ export default function AboutPage() {
           </p>
           <p>
             On the side I run Aida Yazılım, a small AI studio. It built PorlandAI, an
-            assistant for more than 1,000 employees, and my own apps, HitTheRoad and
-            Olifant.
+            assistant for more than 1,000 employees, and my own apps, HitTheRoad,
+            Olifant and Junto.
           </p>
         </div>
         <figure className="min-[900px]:sticky min-[900px]:top-8">
