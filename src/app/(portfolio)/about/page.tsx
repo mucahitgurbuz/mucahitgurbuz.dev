@@ -5,6 +5,7 @@ import { HOBBIES, SITE_CONFIG, SKILLS, SOCIAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
+  alternates: { canonical: "/about" },
   description:
     "Learn about Mücahit Gürbüz - A software engineer with a unique journey from Civil Engineering to building modern web applications.",
 };
