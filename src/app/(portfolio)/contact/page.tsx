@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "@/components/contact";
 import { CopyEmail } from "@/components/shared";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/contact",
   title: "Contact",
-  alternates: { canonical: "/contact" },
   description:
     "Get in touch with Mücahit Gürbüz. Available for opportunities, collaborations, and conversations about tech.",
-};
+});
 
 const ELSEWHERE = [
   { label: "LinkedIn", href: SOCIAL_LINKS.linkedin },

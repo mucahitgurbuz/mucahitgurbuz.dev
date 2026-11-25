@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { AppShowcase, ContactCta, SectionHead, WorkList } from "@/components/shared";
 import { EDUCATION, EXPERIENCE, FEATURED_PROJECTS, PROJECTS } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/experience",
   title: "Work",
-  alternates: { canonical: "/experience" },
   description:
     "Mücahit Gürbüz's work: the apps he builds and runs, ten years of product engineering, side projects and education.",
-};
+});
 
 const aida = FEATURED_PROJECTS.find((project) => project.monogram)!;
 
