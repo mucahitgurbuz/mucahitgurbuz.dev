@@ -5,6 +5,7 @@ import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact",
+  alternates: { canonical: "/contact" },
   description:
     "Get in touch with Mücahit Gürbüz. Available for opportunities, collaborations, and conversations about tech.",
 };

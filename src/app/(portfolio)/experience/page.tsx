@@ -4,6 +4,7 @@ import { EDUCATION, EXPERIENCE, FEATURED_PROJECTS, PROJECTS } from "@/lib/consta
 
 export const metadata: Metadata = {
   title: "Work",
+  alternates: { canonical: "/experience" },
   description:
     "Mücahit Gürbüz's work: the apps he builds and runs, ten years of product engineering, side projects and education.",
 };

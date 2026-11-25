@@ -141,7 +141,7 @@ export const FEATURED_PROJECTS = [
     description:
       "Tell it where and when. It plans the route day by day, with scenic stops, food and places to stay, then rides along as your copilot. Live on the App Store and Google Play in 5 languages.",
     technologies: ["React Native", "Expo", "TypeScript", "Supabase", "LLM / RAG"],
-    link: "https://hittheroad.mucahitgurbuz.dev",
+    link: "https://gethittheroad.com",
     appStore:
       "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743",
     googlePlay:
@@ -164,6 +164,10 @@ export const FEATURED_PROJECTS = [
     technologies: ["SwiftUI", "Jetpack Compose", "React", "Supabase", "PowerSync", "LLM"],
     link: "https://olifant.family",
     webApp: "https://app.olifant.family",
+    appStore:
+      "https://apps.apple.com/us/app/olifant-family-organizer/id6819277133",
+    googlePlay:
+      "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.olifant",
     logo: "/olifant/logo.png",
     kind: "Family organizer",
     tint: "#2f5d7c",

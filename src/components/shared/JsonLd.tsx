@@ -23,10 +23,12 @@ export function PersonJsonLd() {
       SOCIAL_LINKS.twitter,
       SOCIAL_LINKS.googleScholar,
       "https://aidayazilim.com",
-      "https://hittheroad.mucahitgurbuz.dev",
+      "https://gethittheroad.com",
       "https://apps.apple.com/us/app/hittheroad-ai-trip-planner/id6759530743",
       "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.hittheroad",
       "https://olifant.family",
+      "https://apps.apple.com/us/app/olifant-family-organizer/id6819277133",
+      "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.olifant",
       "https://junto.cards",
     ],
     worksFor: [
