@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Mücahit Gürbüz",
   },
   description:
-    "Principal Engineer at Babbel Labs, the AI-first company under Babbel Group building cutting-edge language learning apps, based in Berlin. 10+ years of expertise in React, TypeScript, and modern web technologies, and founder of Aida Yazılım, shipping AI products like HitTheRoad, Olifant and Junto.",
+    "Principal Engineer at Babbel Labs in Berlin and founder of Aida Yazılım, the AI studio behind HitTheRoad, Olifant and Junto.",
   keywords: [
     "Principal Engineer",
     "Software Engineer",
@@ -38,14 +38,6 @@ export const metadata: Metadata = {
     title: "Mücahit Gürbüz | Principal Engineer",
     description:
       "Principal Engineer at Babbel Labs with 10+ years of expertise in React, TypeScript, and modern web technologies.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mücahit Gürbüz - Principal Engineer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -53,7 +45,6 @@ export const metadata: Metadata = {
     description:
       "Principal Engineer at Babbel Labs with 10+ years of expertise in React, TypeScript, and modern web technologies.",
     creator: "@Sosyal_Muhendis",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,

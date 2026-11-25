@@ -165,7 +165,7 @@ export const FEATURED_PROJECTS = [
     link: "https://olifant.family",
     webApp: "https://app.olifant.family",
     appStore:
-      "https://apps.apple.com/us/app/olifant-family-organizer/id6819277133",
+      "https://apps.apple.com/app/apple-store/id6819277133?pt=128534864&ct=mucahitgurbuz-dev&mt=8",
     googlePlay:
       "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.olifant",
     logo: "/olifant/logo.png",

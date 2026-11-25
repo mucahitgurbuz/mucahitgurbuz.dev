@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { ContactCta, SectionHead, TopoMap } from "@/components/shared";
 import { HOBBIES, SITE_CONFIG, SKILLS, SOCIAL_LINKS } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/about",
   title: "About",
-  alternates: { canonical: "/about" },
   description:
     "Learn about Mücahit Gürbüz - A software engineer with a unique journey from Civil Engineering to building modern web applications.",
-};
+});
 
 const SKILL_GROUPS: { label: string; items: readonly string[] }[] = [
   { label: "Languages", items: SKILLS.languages },
