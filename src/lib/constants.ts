@@ -164,6 +164,10 @@ export const FEATURED_PROJECTS = [
     technologies: ["SwiftUI", "Jetpack Compose", "React", "Supabase", "PowerSync", "LLM"],
     link: "https://olifant.family",
     webApp: "https://app.olifant.family",
+    appStore:
+      "https://apps.apple.com/us/app/olifant-family-organizer/id6819277133",
+    googlePlay:
+      "https://play.google.com/store/apps/details?id=com.mucahitgurbuz.olifant",
     logo: "/olifant/logo.png",
     kind: "Family organizer",
     tint: "#2f5d7c",
