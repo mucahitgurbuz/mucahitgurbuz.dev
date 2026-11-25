@@ -5,6 +5,7 @@ const SHARE_IMAGE = {
   url: "/opengraph-image.png",
   width: 1200,
   height: 630,
+  type: "image/png",
   alt: "Mücahit Gürbüz, principal engineer at Babbel Labs in Berlin, builds HitTheRoad, Olifant and Junto",
 };
 
